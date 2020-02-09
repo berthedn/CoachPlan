@@ -106,5 +106,5 @@ local.properties
 
 maven-wrapper*
 MavenWrapperDownloader.java
-mvnw*
+mvnw* 
 
