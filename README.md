@@ -2,9 +2,7 @@ COACH PLAN
 
 Team members :
 
-Eder Aguilar
-Turin Auguste	
-Damien Berthenet
+Eder Aguilar / Turin Auguste	/ Damien Berthenet
 
 Description :
 
