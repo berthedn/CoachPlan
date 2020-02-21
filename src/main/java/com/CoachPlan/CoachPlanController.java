@@ -11,4 +11,19 @@ public class CoachPlanController {
 		return "index";
 	}
 	
+	@RequestMapping("/athlete")
+	public String athletePage() {
+		return "athlete";
+	}
+	
+	@RequestMapping("/athleteList")
+	public String athleteList() {
+		return "athleteList";
+	}
+	
+	@RequestMapping("/edit")
+	public String editAthlete() {
+		return "editAthlete";
+	}
+	
 }
