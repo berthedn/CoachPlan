@@ -2,11 +2,24 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8"></meta>
+<link rel="stylesheet" type="text/css" media="screen" href="style.css"/>
 <title>Athlete List</title>
 </head>
 <body>
 <h1>Coach login Page</h1>
 </br>
 <p th:text="${'Welcome, ' + coachDTO + '!'}"/>
+
+<table>
+	<tr>
+		<th>Monday</th>
+		<th>Tuesday</th>
+		<th>Wednesday</th>
+		<th>Thursday</th>
+		<th>Friday</th>
+		<th>Saturday</th>
+		<th>Sunday</th>
+	</tr>
+</table>
 </body>
 </html>
