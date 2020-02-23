@@ -37,7 +37,7 @@ public class CoachPlanController {
 		return "athleteList";
 	}
 	
-	//page for coaches to edit there athlete schedules
+	//page for coaches to edit their athlete schedules
 	@RequestMapping("/edit")
 	public String editAthlete() {
 		return "editAthlete";
