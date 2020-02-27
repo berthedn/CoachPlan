@@ -25,3 +25,10 @@ table, th, td {
 .height-50 {
 	height: 50px;
 }
+
+.link-button {
+	background-color: lightgray; /* or whatever  */
+	text-decoration: none; /* removes underline */
+	padding: 8px 12px; /* adds some body to the button */
+	line-height: 30px; /* makes inner text same height as button */
+}
