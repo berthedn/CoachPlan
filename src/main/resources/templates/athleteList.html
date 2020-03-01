@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8"></meta>
+<link rel="stylesheet" type="text/css" media="screen" href="athleteList.css"/>
+<title>Athlete List</title>
+</head>
+<body>
+<h1>Coach login Page</h1>
+</br>
+<p th:text="${'Welcome, ' + coachDTO + '!'}"/>
+<a href="index">
+	<button>Home</button>
+</a>
+</br>
+</br>
+<a href="">
+	<button>Add Athlete</button>
+</a>
+</br>
+</br>
+</br>
+
+
+<table>
+<tr>
+	<th height="100">Athlete</th>
+		<th>Workout Schedule</th>
+	</tr>
+	<tr>
+		<th height="50">Athlete 1</th>
+		<th> <a href="edit"> <button>Edit</button></a> </th>
+	</tr>
+	<tr>
+		<th height="50">Athlete 2</th>
+		<th> <a href="edit"> <button>Edit</button></a> </th>
+	</tr>
+	<tr>
+		<th height="50">Athlete 3</th>
+		<th> <a href="edit"> <button>Edit</button></a> </th>
+	</tr>
+	<tr>
+		<th height="50">Athlete 4</th>
+		<th> <a href="edit"> <button>Edit</button></a> </th>
+	</tr>
+	
+	
+</table>
+</body>
+</html>
