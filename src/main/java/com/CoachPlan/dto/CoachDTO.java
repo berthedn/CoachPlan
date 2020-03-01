@@ -3,13 +3,26 @@ package com.CoachPlan.dto;
 public class CoachDTO {
 	
 	private String loginID;
+	private String fullName;
+	private String Sport;
 	//TODO what other fields should a coach DTO have? Should we have a password field?  
 	
-	
-	public void setLoginID(String login) {
-		this.loginID = login;
+	public void setName(String name) {
+		this.fullName = name;
 	}
 	
+	public String getName() {
+		return this.fullName;
+	}
+	
+	public void setSport(String sport) {
+		this.Sport = sport;
+	}
+	
+	public String getSport() {
+		return this.Sport;
+	}
+		
 	public String getLoginID() {
 		return this.loginID;
 	}
