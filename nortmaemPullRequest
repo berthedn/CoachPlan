@@ -1,0 +1,29 @@
+Apologies, git is not allowing me to create a pull request saying the my branch didn't share the same commit histories with master and I have no idea how to resolve it.  So I will leave my comments here.
+
+Analysis of the program:
+    This program appears to set out to be a scheduling application designed for coaches to assign specific workouts on a schedule to his/her specific players.  UI works and the program has suffient stubs.
+
+Was the program available in UC Github on time?
+Yes.
+
+Is the program documented/commented well enough for you to understand?
+Yes, the group provided beneficial comments for us to follow
+
+Does the program compile?
+Yes
+
+CHANGES:
+-Changed label id's to match current naming practices
+
+-Made width of table of table columns all same percentage of table itself
+
+-Added getters and setters to split a students name into separate components
+
+-Centered main screen. Also created a css file for each page
+
+SUMMARY:
+So I will quickly discuss my changes and why.
+So first, on the index.html I changed the id's for your labels to correspond current naming conventions (At least in my experience).
+Next I altered the style.css file to make your table column's width all the same percentage of width of the entire table.
+In the StudentDTO, I created and broke up the name element to a practice we do in my work, which is to get the first and last name separately, but also an additional preferred name field.  This allows students to let their coaches know they prefer to go by a different name than their given name.  The setFullName method finds if preferred name field is left null to assign it in the FullName.
+Finally, I also centered your main screen just so you're not overwhelmed by all the free white space, I know this is early UI but it is good practice to have centered elements.  While on the topic of best practice, I also created an individual css file that corresponds to each html file.  This is best as it will allow you to customize each html file individually and not load up one css file.
