@@ -2,7 +2,7 @@
 
 
 table {
-	width: 1400px;
+	width: 100%;
 }
 
 th {
@@ -12,4 +12,23 @@ th {
 table, th, td {
 	border: 1px solid #000;
 	border-collapse: collapse;
+}
+
+.height-600 {
+	height: 600px;
+}
+
+.height-100 {
+	height: 100px;
+}
+
+.height-50 {
+	height: 50px;
+}
+
+.link-button {
+	background-color: lightgray; /* or whatever  */
+	text-decoration: none; /* removes underline */
+	padding: 8px 12px; /* adds some body to the button */
+	line-height: 30px; /* makes inner text same height as button */
 }
