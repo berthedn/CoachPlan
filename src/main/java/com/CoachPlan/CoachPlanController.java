@@ -1,12 +1,17 @@
 package com.CoachPlan;
 
+import java.util.concurrent.ExecutionException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.CoachPlan.dto.CoachDTO;
+import com.CoachPlan.dto.UserDTO;
+import com.CoachPlan.service.FirebaseService;
 import com.CoachPlan.service.ICoachService;
 
 @Controller
@@ -17,6 +22,9 @@ public class CoachPlanController {
 	//Also need to come up with a DTO class. Do we want to use different DTO classes for coach and student as well? 
 	@Autowired
 	private ICoachService coachServiceStub;
+	
+	@Autowired
+	FirebaseService firebaseService;
 	
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
 	public String index() {
@@ -41,6 +49,15 @@ public class CoachPlanController {
 	@RequestMapping("/edit")
 	public String editAthlete() {
 		return "editAthlete";
+	}
+	
+	//Add new user to database
+	@RequestMapping(value="/createAthlete", method=RequestMethod.GET)
+	public String createUser(@RequestParam(value="id") String id, @RequestParam(value="name") String name, @RequestParam(value="title") String title) throws InterruptedException, ExecutionException {
+		Integer newID = Integer.parseInt(id);
+		UserDTO newUser = new UserDTO(newID, name, title);
+		firebaseService.saveUserDeatails(newUser);
+		return "index";
 	}
 	
 }

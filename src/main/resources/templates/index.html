@@ -21,13 +21,18 @@ Access to the Athlete Interface </br>
 </br>
 </br>
 </br>
-Login Interface is not working yet </br></br>
-<form action="">
-  <label for="fname">First name:</label><br>
-  <input type="text" id="fname" name="fname" ><br>
-  <label for="lname">Last name:</label><br>
-  <input type="text" id="lname" name="lname" ><br><br>
-  <input type="submit" value="Submit">
+Enter New User Information: </br></br>
+<form action="#" th:action="@{/createAthlete}" method="GET">
+  <p>
+  	ID : <input type="text" name="id" />
+  </p>
+  <p>
+  	Name : <input type="text" name="name" />
+  </p>
+  <p>
+  	Title : <input type="text" name="title" />
+  </p>
+  <button name="submit" type="submit" value="0">Submit</button>
 </form>
 
 </body>
