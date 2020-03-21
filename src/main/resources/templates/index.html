@@ -3,14 +3,66 @@
 
 <head>
   <meta charset="ISO-8859-1">
-  </meta>
   <title>CoachPlan</title>
   <link rel="stylesheet" type="text/css" media="screen" href="style.css"/>
+  <script>https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js</script>
+  <script type="text/javascript">
+
+
+	function student(){
+		var login = document.getElementById("login");
+		var initial = document.getElementById("initial");
+		var view = document.getElementById("view");
+		
+		initial.style.display="none";
+		login.style.display="inline";
+		view.innerHTML=("Student Login");
+	}
+	
+	function coach(){
+		var login = document.getElementById("login");
+		var initial = document.getElementById("initial");
+		var view = document.getElementById("view");
+		
+		initial.style.display="none";
+		login.style.display="inline";
+		view.innerHTML=("Coach Login");
+		
+	}
+	
+	function home(){
+		var login = document.getElementById("login");
+		var initial = document.getElementById("initial");
+		
+		initial.style.display="inline";
+		login.style.display="none";
+		
+	}
+  
+  </script>
 </head>
 
 <body>
-  <h1>Welcome to CoachPlan!</h1>
+ <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">CoachPlan</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      <a class="nav-item nav-link active" href="#" onclick="home()">Home <span class="sr-only">(current)</span></a>
+      <a class="nav-item nav-link" href="#" onclick="coach()">Coach Login</a>
+      <a class="nav-item nav-link" href="#" onclick="student()">Student Login</a>
+<!--       <a class="nav-item nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+ -->    </div>
+  </div>
+</nav>
 
+
+	<h2 id="initial">Welcome to CoachPlan!</h2>
+<!--   	<h3 id="info" >Please select a coach or student login on the navigation bar</h3>
+ -->
+ 
   <h3>
     Access to the Coach Interface </br>
   </h3>
@@ -23,15 +75,31 @@
 
   <a class='link-button' href="athlete">Athlete</a>
 
-  Login Interface is not working yet
-  <form action="">
-    <label for="fname">First name:</label><br>
-    <input type="text" id="fname" name="fname"><br>
-    <label for="lname">Last name:</label><br>
-    <input type="text" id="lname" name="lname"><br><br>
-    <input type="submit" value="Submit">
-  </form>
 
-</body>
+  Login Interface is not working yet
+<!--   <div class="textbox">
+	  <form action="">
+	    <label for="fname">First name:</label><br>
+	    <input type="text" id="fname" name="fname"><br>
+	    <label for="lname">Last name:</label><br>
+	    <input type="text" id="lname" name="lname"><br><br>
+	    <input type="submit" value="Submit">
+	  </form>
+   </div>
+</body> -->
+
+<div class="login-box" id="login">
+	<h1 id="view">Login</h1>
+	<div class="textbox">
+		<input type="text" placeholder="Username" name="" value="">
+	</div>
+	
+	<div class="textbox">
+		<input type="password" placeholder="Password" name="" value="">
+	</div>
+	
+	<input class="btn" type="button" name="" value="Submit">
+
+</div>
 
 </html>
