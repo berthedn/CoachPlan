@@ -36,36 +36,28 @@ table, th, td {
 }
 
 body {
-
+	width: 100%;
+	height: 100vh;
+	color: #fff;
+	background: linear-gradient(-45deg, #EE7752, #E73C7E, #23A6D5, #23D5AB);
+	background-size: 400% 400%;
+	position: relative;
+	animation: change 1s ease-in-out;
 }
 
-h2{
- 	color: #23D5AB;
-	font-size: 70px;
+ h2{
+	font-size: 4rem;
 	text-transform: uppercase;
 	letter-spacing: 2px;
-	font-weight : 900;
+	border: 3px solid #fff;
+	position: absolute;
+ 	top: 50%;
+  	left: 50%;
+  	transform: translate(-50%, -50%);
+ 	padding: 5rem 10rem;
+ 
+	
 } 
-
-h3{
-	color: #23D5AB;
-	font-size: 40px;	
-}
-
-
-
-.container {
-  width: 80%;
-}
-
-.one {
-  float: left;
-}
-
-.two {
-  float: right;
-}
-
 
 .login-box{
 	width: 280px;
@@ -74,6 +66,7 @@ h3{
 	left: 50%;
 	transform: translate(-50%,-50%);
 	color: black;
+	display: none;
 }
 
 .login-box h1{
