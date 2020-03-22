@@ -3,26 +3,25 @@ package com.CoachPlan.dto;
 public class UserDTO {
 	
 	private int ID;
+	private String email;
 	private String name;
-	private String title;
 	
 	public UserDTO() {
-		
+		super();
 	}
 	
-	public UserDTO(int IDIn, String nameIn, String titleIn) {
-		super();
-		ID = IDIn;
-		name = nameIn;
-		title = titleIn;
+	public UserDTO(int ID, String email, String name) {
+		this.ID = ID;
+		this.email = email;
+		this.name = name;
 	}
 
 	public int getID() {
 		return ID;
 	}
 
-	public void setID(int iD) {
-		ID = iD;
+	public void setID(int ID) {
+		this.ID = ID;
 	}
 
 	public String getName() {
@@ -33,12 +32,12 @@ public class UserDTO {
 		this.name = name;
 	}
 
-	public String getTitle() {
-		return title;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setTitle(String title) {
-		this.title = title;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	
 	
