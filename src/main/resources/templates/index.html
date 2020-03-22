@@ -1,39 +1,32 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1"></meta>
-<title>CoachPlan</title>
+	<meta charset="ISO-8859-1">
+	<link rel="stylesheet" type="text/css" media="screen" href="style.css"/>
+	
+	<script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-auth.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-database.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-firestore.js"></script>
+	
+	<script src="index.js"></script>
+	
+	<title>CoachPlan</title>
+
 </head>
 <body>
-<h1>Welcome to CoachPlan!</h1>
-</br>
-Access to the Coach Interface </br>
-<a href="athleteList">
-	<button>Coach</button>
-</a>
-</br>
-</br>
-Access to the Athlete Interface </br>
-<a href="athlete">
-	<button>Athlete</button>
-</a>
-</br>
-</br>
-</br>
-</br>
-Enter New User Information: </br></br>
-<form action="#" th:action="@{/createAthlete}" method="GET">
-  <p>
-  	ID : <input type="text" name="id" />
-  </p>
-  <p>
-  	Name : <input type="text" name="name" />
-  </p>
-  <p>
-  	Title : <input type="text" name="title" />
-  </p>
-  <button name="submit" type="submit" value="0">Submit</button>
-</form>
 
+		<div id="login-div" class="login-div" >
+		
+			<h1>Login</h1>
+			<input type="text" id="email_field" />
+			<br>
+			<input type="text" id="password_field"/>
+			<br>
+	
+			<button type="button" onclick="login()">Login</button><br>
+			<button type="button" onclick="signOut()">Sign Out</button>
+		
+		</div>
 </body>
 </html>

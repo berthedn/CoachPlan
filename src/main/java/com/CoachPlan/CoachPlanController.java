@@ -51,11 +51,12 @@ public class CoachPlanController {
 		return "editAthlete";
 	}
 	
+	
 	//Add new user to database
 	@RequestMapping(value="/createAthlete", method=RequestMethod.GET)
-	public String createUser(@RequestParam(value="id") String id, @RequestParam(value="name") String name, @RequestParam(value="title") String title) throws InterruptedException, ExecutionException {
+	public String createUser(@RequestParam(value="id") String id, @RequestParam(value="email") String email, @RequestParam(value="name") String name) throws InterruptedException, ExecutionException {
 		Integer newID = Integer.parseInt(id);
-		UserDTO newUser = new UserDTO(newID, name, title);
+		UserDTO newUser = new UserDTO(newID, email, name);
 		firebaseService.saveUserDeatails(newUser);
 		return "index";
 	}
