@@ -1,41 +1,50 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8"></meta>
-<link rel="stylesheet" type="text/css" media="screen" href="style.css"/>
-<title>Athlete Workout Page</title>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" media="screen" href="style.css"/>
+	
+	<script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-auth.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-database.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-firestore.js"></script>
+	
+	<title>Athlete Workout Page</title>
+	
+	<script src="index.js"></script>
 </head>
 <body>
-<h1>Athlete Login Page</h1>
-<a href="index">
-	<button>Home</button>
-</a>
-</br>
-</br>
-
-View Your Scheduled Workouts
-</br>
-</br>
-
-<table>
-	<tr>
-		<th>Monday</th>
-		<th>Tuesday</th>
-		<th>Wednesday</th>
-		<th>Thursday</th>
-		<th>Friday</th>
-		<th>Saturday</th>
-		<th>Sunday</th>
-	</tr>
-	<tr>
-		<th height="600"></th>
-		<th></th>
-		<th></th>
-		<th></th>
-		<th></th>
-		<th></th>
-		<th></th>
-	</tr>
-</table>
+	<h1>Athlete Login Page</h1>
+	<a href="index">
+		<button>Home</button>
+	</a>
+	<br><br>
+	
+	View Your Scheduled Workouts
+	<br><br>
+	
+	<table>
+		<tr>
+			<th>Monday</th>
+			<th>Tuesday</th>
+			<th>Wednesday</th>
+			<th>Thursday</th>
+			<th>Friday</th>
+			<th>Saturday</th>
+			<th>Sunday</th>
+		</tr>
+		<tr>
+			<th height="600"></th>
+			<th></th>
+			<th></th>
+			<th></th>
+			<th></th>
+			<th></th>
+			<th></th>
+		</tr>
+	</table>
+	
+	<button type="button" onclick="signOut()">Sign Out</button>
+	
 </body>
 </html>
