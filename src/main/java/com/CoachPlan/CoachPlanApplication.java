@@ -8,6 +8,6 @@ public class CoachPlanApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(CoachPlanApplication.class, args);
-	}
+	 }
 
 }
