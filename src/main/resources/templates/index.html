@@ -5,7 +5,15 @@
   <meta charset="ISO-8859-1">
   <title>CoachPlan</title>
   <link rel="stylesheet" type="text/css" media="screen" href="style.css"/>
-  <script>https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js</script>
+  <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script> -->
+  
+  <script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-database.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-firestore.js"></script>
+	
+  <script src="index.js"></script>
+  
   <script type="text/javascript">
 
 
@@ -13,20 +21,32 @@
 		var login = document.getElementById("login");
 		var initial = document.getElementById("initial");
 		var view = document.getElementById("view");
+		var user = document.getElementById("user");
+		var email = document.getElementById("email");
+		var password = document.getElementById("password");
 		
 		initial.style.display="none";
 		login.style.display="inline";
 		view.innerHTML=("Student Login");
+		user.innerHTML=("Student Credentials:");
+		email.innerHTML=("Email: athlete@plan.com");
+		password.innerHTML=("Password: password");
 	}
 	
 	function coach(){
 		var login = document.getElementById("login");
 		var initial = document.getElementById("initial");
 		var view = document.getElementById("view");
+		var user = document.getElementById("user");
+		var email = document.getElementById("email");
+		var password = document.getElementById("password");
 		
 		initial.style.display="none";
 		login.style.display="inline";
 		view.innerHTML=("Coach Login");
+		user.innerHTML=("Coach Credentials:");
+		email.innerHTML=("Email: coach@plan.com");
+		password.innerHTML=("Password: password");
 		
 	}
 	
@@ -96,23 +116,28 @@
 <div >
 	<h1 id="view">Login</h1>
 	<div class="textbox">
-		<input type="text" placeholder="Username" name="" value="">
+		<input type="text" placeholder="Username" id="email_field">
 	</div>
 	
 	<div class="textbox">
-		<input type="password" placeholder="Password" name="" value="">
+		<input type="text" placeholder="Password" id="password_field">
 	</div>
 	
-	<input class="btn" type="button" name="" value="Submit">
+	<input class="btn" value="Login" type="button" onclick="login()"> <br>
+	<input class="btn" value="Logout" type="button" onclick="signOut()">
+	<div id="user">User</div>
+	<div id="email">email</div>
+	<div id="password">password</div>
+
 
 </div>
 
-<br></br>
-<br></br>
-Login Interface is not working yet
+<!-- Commenting out backup Links -->
+<!--
+Back-up Links:
 
 <h3>
-    Access to the Coach Interface </br>
+    Access to the Coach Interface <br>
   </h3>
 
   <a class='link-button' href="athleteList">Coach</a>
@@ -122,6 +147,7 @@ Login Interface is not working yet
   </h3>
 
   <a class='link-button' href="athlete">Athlete</a>
+  -->
 
 </div>
 

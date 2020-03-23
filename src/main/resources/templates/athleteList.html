@@ -5,6 +5,14 @@
 	<meta charset="UTF-8">
 	</meta>
 	<link rel="stylesheet" type="text/css" media="screen" href="style.css" />
+	
+	<script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-auth.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-database.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-firestore.js"></script>
+	
+	<script src="index.js"></script>
+	
 	<title>Athlete List</title>
 </head>
 
@@ -22,8 +30,10 @@
 </nav>
 	<h1>Coach login Page</h1>
 	<p th:text="${'Welcome, ' + coachDTO + '!'}" />
-
+	
+	<!--  Commented out Link
 	<a class='link-button' href="index">Home</a>
+	-->
 
 	<a class='link-button' href="">Add Athlete</a>
 
@@ -51,6 +61,10 @@
 
 
 	</table>
+	
+	<br>
+	<button type="button" onclick="signOut()">Sign Out</button>
+	
 </body>
 
 </html>

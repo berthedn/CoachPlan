@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.CoachPlan.dto.CoachDTO;
+import com.CoachPlan.service.FirebaseService;
 import com.CoachPlan.service.ICoachService;
 
 @Controller
@@ -17,6 +18,9 @@ public class CoachPlanController {
 	//Also need to come up with a DTO class. Do we want to use different DTO classes for coach and student as well? 
 	@Autowired
 	private ICoachService coachServiceStub;
+	
+	@Autowired
+	FirebaseService firebaseService;
 	
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
 	public String index() {
