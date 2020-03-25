@@ -1,15 +1,34 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8"></meta>
-<link rel="stylesheet" type="text/css" media="screen" href="style.css"/>
-<title>View/Edit Athlete Schedule</title>
+	<meta charset="UTF-8">
+	</meta>
+	<link rel="stylesheet" type="text/css" media="screen" href="style.css" />
+	
+	<script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-auth.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-database.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-firestore.js"></script>
+	
+	<script src="index.js"></script>
+	
+	<title>Edit Athlete Schedule</title>
 </head>
 <body>
-
+ <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">CoachPlan</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      <a class="nav-item nav-link active" href="index">Logout <span class="sr-only">(current)</span></a>
+    </div>
+  </div>
+</nav>
 	<h1>Edit Athlete Schedule Page</h1>
 
-	<a class='link-button' href="athleteList">Back</a>
+	<a class="btn" href="athleteList">Back</a>
 
 
 <table>
