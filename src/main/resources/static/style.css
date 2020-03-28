@@ -84,6 +84,10 @@ h3{
 
 }
 
+.login-box #confirm_password_field {
+	display: none;
+}
+
 .textbox{
 	width: 100%;
 	overflow: hidden;

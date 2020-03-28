@@ -41,13 +41,21 @@
 		var user = document.getElementById("user");
 		var email = document.getElementById("email");
 		var password = document.getElementById("password");
+		var confirm = document.getElementById("confirm_password_field");
+		var emailField = document.getElementById("email_field");
+		var confirm = document.getElementById("confirm_password_field");
+		var button = document.getElementById("button");
 		
 		initial.style.display="none";
 		login.style.display="inline";
 		view.innerHTML=("Athlete Login");
+		emailField.placeholder=("Username");
 		user.innerHTML=("Athlete Credentials:");
 		email.innerHTML=("Email: athlete@plan.com");
 		password.innerHTML=("Password: password");
+		confirm.style.display="none";
+		button.value=("Login");
+		
 	}
 	
 	function coach(){
@@ -57,13 +65,19 @@
 		var user = document.getElementById("user");
 		var email = document.getElementById("email");
 		var password = document.getElementById("password");
+		var confirm = document.getElementById("confirm_password_field");
+		var emailField = document.getElementById("email_field");
+		var button = document.getElementById("button");
 		
 		initial.style.display="none";
 		login.style.display="inline";
 		view.innerHTML=("Coach Login");
+		emailField.placeholder=("Username");
 		user.innerHTML=("Coach Credentials:");
 		email.innerHTML=("Email: coach@plan.com");
 		password.innerHTML=("Password: password");
+		confirm.style.display="none";
+		button.value=("Login");
 		
 	}
 	
@@ -74,6 +88,26 @@
 		initial.style.display="inline";
 		login.style.display="none";
 		
+	}
+	
+	function coachRegister(){
+		var login = document.getElementById("login");
+		var initial = document.getElementById("initial");
+		var view = document.getElementById("view");
+		var user = document.getElementById("user");
+		var email = document.getElementById("email");
+		var password = document.getElementById("password");
+		var button = document.getElementById("button");
+		var emailField = document.getElementById("email_field");
+		var confirm = document.getElementById("confirm_password_field");
+		
+		initial.style.display="none";
+		login.style.display="inline";
+		view.innerHTML=("Register Coach");
+		button.value=("Register");
+		emailField.placeholder=("Email");
+		confirm.style.display="inline";
+	
 	}
   
   </script>
@@ -91,6 +125,8 @@
       <a class="nav-item nav-link active" href="#" onclick="home()">Home <span class="sr-only">(current)</span></a>
       <a class="nav-item nav-link" href="#" onclick="coach()">Coach Login</a>
       <a class="nav-item nav-link" href="#" onclick="student()">Student Login</a>
+      <a class="nav-item nav-link" href="#" onclick="coachRegister()">Register Coach</a>
+      
 <!--       <a class="nav-item nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
  -->    </div>
   </div>
@@ -142,7 +178,11 @@
 		<input type="password" placeholder="Password" id="password_field">
 	</div>
 	
-	<input class="btn" value="Login" type="button" onclick="login()"> <br>
+	<div class="textbox">
+		<input type="password" placeholder="Confirm Password" id="confirm_password_field">
+	</div>
+	
+	<input id="button" class="btn" value="Login" type="button" onclick="login()"> <br>
 	<!-- <input class="btn" value="Logout" type="button" onclick="signOut()"> -->
 	<div id="user">User</div>
 	<div id="email">email</div>
