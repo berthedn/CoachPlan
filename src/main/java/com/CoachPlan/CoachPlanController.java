@@ -47,4 +47,9 @@ public class CoachPlanController {
 		return "editAthlete";
 	}
 	
+	@RequestMapping("/registerAthlete")
+	public String registerAthlete() {
+		return "registerAthlete";
+	}
+	
 }
