@@ -88,6 +88,10 @@ h3{
 	display: none;
 }
 
+.login-box #form {
+	display: none;
+}
+
 .textbox{
 	width: 100%;
 	overflow: hidden;

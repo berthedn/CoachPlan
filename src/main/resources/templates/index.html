@@ -41,20 +41,15 @@
 		var user = document.getElementById("user");
 		var email = document.getElementById("email");
 		var password = document.getElementById("password");
-		var confirm = document.getElementById("confirm_password_field");
-		var emailField = document.getElementById("email_field");
-		var confirm = document.getElementById("confirm_password_field");
-		var button = document.getElementById("button");
+		var form = document.getElementById("form2");
 		
 		initial.style.display="none";
 		login.style.display="inline";
 		view.innerHTML=("Athlete Login");
-		emailField.placeholder=("Username");
 		user.innerHTML=("Athlete Credentials:");
 		email.innerHTML=("Email: athlete@plan.com");
 		password.innerHTML=("Password: password");
-		confirm.style.display="none";
-		button.value=("Login");
+		form.style.display=("none");
 		
 	}
 	
@@ -65,19 +60,17 @@
 		var user = document.getElementById("user");
 		var email = document.getElementById("email");
 		var password = document.getElementById("password");
-		var confirm = document.getElementById("confirm_password_field");
-		var emailField = document.getElementById("email_field");
-		var button = document.getElementById("button");
+		var form = document.getElementById("form2");
+		
 		
 		initial.style.display="none";
 		login.style.display="inline";
 		view.innerHTML=("Coach Login");
-		emailField.placeholder=("Username");
 		user.innerHTML=("Coach Credentials:");
 		email.innerHTML=("Email: coach@plan.com");
 		password.innerHTML=("Password: password");
-		confirm.style.display="none";
-		button.value=("Login");
+		form.style.display=("inline");
+		
 		
 	}
 	
@@ -178,15 +171,29 @@
 		<input type="password" placeholder="Password" id="password_field">
 	</div>
 	
-	<div class="textbox">
-		<input type="password" placeholder="Confirm Password" id="confirm_password_field">
-	</div>
-	
 	<input id="button" class="btn" value="Login" type="button" onclick="login()"> <br>
 	<!-- <input class="btn" value="Logout" type="button" onclick="signOut()"> -->
 	<div id="user">User</div>
 	<div id="email">email</div>
 	<div id="password">password</div>
+	
+	<div id="form2">
+			<h1 id="view">Register Coach</h1>
+		<div class="textbox">
+			<input type="text" placeholder="Email" id="field">
+		</div>
+		
+		<div class="textbox">
+			<input type="password" placeholder="Password" id="password">
+		</div>
+		
+		<div class="textbox">
+			<input type="password" placeholder="Confirm Password" id="confirm_field">
+		</div>
+		
+		<input id="button" class="btn" value="Register" type="button" onclick="login()"> <br>
+	</div>
+
 
 
 </div>
