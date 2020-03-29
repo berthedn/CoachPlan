@@ -53,9 +53,9 @@ public class CoachPlanController {
 	
 	//Add new coach to database
 	@RequestMapping(value="/registerCoach", method=RequestMethod.GET)
-	public String registerCoach(@RequestParam(value="name") String name, @RequestParam(value="email") String email) throws InterruptedException, ExecutionException {
+	public String registerCoach(@RequestParam(value="name") String name, @RequestParam(value="email") String email, @RequestParam(value="password") String password) throws InterruptedException, ExecutionException {
 		String ID = "1";
-		UserDTO newUser = new UserDTO(ID, email, name);
+		UserDTO newUser = new UserDTO(ID, email, name, password);
 		firebaseService.saveUserDeatails(newUser);
 		return "index";
 	}
@@ -67,9 +67,9 @@ public class CoachPlanController {
 	
 	//Add new athlete to database
 	@RequestMapping(value="/addAthlete", method=RequestMethod.GET)
-	public String registerAthlete(@RequestParam(value="name") String name, @RequestParam(value="email") String email) throws InterruptedException, ExecutionException {
+	public String registerAthlete(@RequestParam(value="name") String name, @RequestParam(value="email") String email, @RequestParam(value="password") String password) throws InterruptedException, ExecutionException {
 		String ID = "2";
-		UserDTO newUser = new UserDTO(ID, email, name);
+		UserDTO newUser = new UserDTO(ID, email, name, password);
 		firebaseService.saveUserDeatails(newUser);
 		return "athleteList";
 	}
