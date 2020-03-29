@@ -29,7 +29,7 @@
 </nav>
 	<!-- Below is code for linking controller action -->
 	<!-- action="#" th:action="@{/registerAthlete}" method="GET" -->
-	<form class="login-box-register" id="login" >
+	<form class="login-box-register" id="login" action="#" th:action="@{/addAthlete}" method="GET" >
 	
 		<h1>Register Athlete</h1>
 		<div class="textbox">
@@ -41,7 +41,7 @@
 		</div>
 		
 		<div class="textbox">
-			<input type="password" placeholder="Password" id="password_field" required>
+			<input type="password" placeholder="Password" name="password" id="password" required>
 		</div>
 		
 		<div class="textbox">
