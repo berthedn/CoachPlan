@@ -2,7 +2,7 @@ package com.CoachPlan.dto;
 
 public class UserDTO {
 
-	private int ID;
+	private String title;
 	private String email;
 	private String name;
 	
@@ -10,18 +10,18 @@ public class UserDTO {
 		super();
 	}
 	
-	public UserDTO(int ID, String email, String name) {
-		this.ID = ID;
+	public UserDTO(String title, String email, String name) {
+		this.title = title;
 		this.email = email;
 		this.name = name;
 	}
 
-	public int getID() {
-		return ID;
+	public String getTitle() {
+		return title;
 	}
-
-	public void setID(int ID) {
-		this.ID = ID;
+	
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
 	public String getName() {

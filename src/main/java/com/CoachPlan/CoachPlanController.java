@@ -1,12 +1,16 @@
 package com.CoachPlan;
 
+import java.util.concurrent.ExecutionException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.CoachPlan.dto.CoachDTO;
+import com.CoachPlan.dto.UserDTO;
 import com.CoachPlan.service.FirebaseService;
 import com.CoachPlan.service.ICoachService;
 
@@ -47,9 +51,27 @@ public class CoachPlanController {
 		return "editAthlete";
 	}
 	
+	//Add new coach to database
+	@RequestMapping(value="/registerCoach", method=RequestMethod.GET)
+	public String registerCoach(@RequestParam(value="name") String name, @RequestParam(value="email") String email) throws InterruptedException, ExecutionException {
+		String ID = "1";
+		UserDTO newUser = new UserDTO(ID, email, name);
+		firebaseService.saveUserDeatails(newUser);
+		return "index";
+	}
+	
 	@RequestMapping("/registerAthlete")
 	public String registerAthlete() {
 		return "registerAthlete";
+	}
+	
+	//Add new athlete to database
+	@RequestMapping(value="/addAthlete", method=RequestMethod.GET)
+	public String registerAthlete(@RequestParam(value="name") String name, @RequestParam(value="email") String email) throws InterruptedException, ExecutionException {
+		String ID = "2";
+		UserDTO newUser = new UserDTO(ID, email, name);
+		firebaseService.saveUserDeatails(newUser);
+		return "athleteList";
 	}
 	
 }

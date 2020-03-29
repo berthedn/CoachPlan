@@ -6,13 +6,17 @@
 <link rel="stylesheet" type="text/css" media="screen" href="style.css"/>
 </head>
 <body>
-
-
-	<div class="login-box-register" id="login">
+	<!-- Below is code for linking controller action -->
+	<!-- action="#" th:action="@{/registerAthlete}" method="GET" -->
+	<form class="login-box-register" id="login" >
 	
 		<h1>Register Athlete</h1>
 		<div class="textbox">
-			<input type="text" placeholder="Email" id="email_field">
+			<input type="text" placeholder="Name" name="name" id="name">
+		</div>
+		
+		<div class="textbox">
+			<input type="text" placeholder="Email" name="email" id="email">
 		</div>
 		
 		<div class="textbox">
@@ -23,7 +27,7 @@
 			<input type="password" placeholder="Confirm Password" id="password_field">
 		</div>
 		
-		<input id="button" class="btn" value="Create" type="button" onclick="login()"> <br>
-	</div>
+		<input id="button" class="btn" value="Create" type="submit" onclick=""> <br>
+	</form>
 </body>
 </html>

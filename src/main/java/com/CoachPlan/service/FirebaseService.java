@@ -17,7 +17,7 @@ public class FirebaseService {
 	
 	public String saveUserDeatails(UserDTO user) throws InterruptedException, ExecutionException {
 		Firestore dbFirestore = FirestoreClient.getFirestore();
-		ApiFuture<WriteResult> collectionApiFuture = dbFirestore.collection("users").document(user.getEmail()).set(user);
+		ApiFuture<WriteResult> collectionApiFuture = dbFirestore.collection("Users").document(user.getEmail()).set(user);
 		return collectionApiFuture.get().getUpdateTime().toString();
 	}
 	

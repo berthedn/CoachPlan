@@ -2,10 +2,6 @@
 var currentEmail;
 var currentUserId;	 
 
-/*firebase.auth().onAuthStateChanged(function(user) {
-	console.log(user);
-})*/
-
 function login() {
 	
 	var userEmail = document.getElementById("email_field").value;
@@ -15,24 +11,13 @@ function login() {
 	
 	window.alert("Signed In");
 	currentEmail = userEmail.toString();
-	//changePage();
-	
-	/*firebase.firestore().collection('Users').get().then((snapshot) => {
-		snapshot.docs.forEach(doc => {
-			console.log(doc.data());
-			if(doc.id == currentEmail) {
-				console.log(doc.data());
-				currentUserId = doc.data().ID;
-			}
-		})
-	})*/
 	
 	var docRef = firebase.firestore().collection("Users").doc(currentEmail)
 	
-	docRef.get().then(function(doc){
+	docRef.get().then((doc) => {
 		if(doc.exists) {
 			console.log(doc.data());
-			currentUserId = doc.data().ID;
+			currentUserId = doc.data().title;
 			console.log(currentUserId);
 			
 			if(currentUserId == 1) {
@@ -42,7 +27,7 @@ function login() {
 				location.replace("http://127.0.0.1:8080/athlete");
 				console.log("2");
 			} else {
-				location.replace("http://127.0.0.1:8080/index");	
+				location.replace("http://127.0.0.1:8080/index");
 				console.log("3");
 			}
 		}else {
@@ -53,7 +38,7 @@ function login() {
 	});
 	
 		
-	firebase.auth().signInWithEmailAndPassword(userEmail, userPass).catch(function(error) {
+	/*firebase.auth().signInWithEmailAndPassword(userEmail, userPass).catch(function(error) {
 		  // Handle Errors here.
 		  var errorCode = error.code;
 		  var errorMessage = error.message;
@@ -62,10 +47,26 @@ function login() {
 		  window.alert("Error: " + errorMessage);
 		});
 	
-		/*window.alert("Signed In");
+		window.alert("Signed In");
 		currentEmail = userEmail.toString();
 		changePage();*/
 		
+}
+
+function registerCoach() {
+	
+	var userEmail = document.getElementById("email").value;
+	var userName = document.getElementById("name").value;
+	var id = "1";
+	
+	firebase.database().ref('Users/' + userEmail).set({
+		identity: id,
+		name: userName,
+		email: userEmail
+	});
+	
+	window.alert("Registered");
+	location.replace("http://127.0.0.1:8080/index");
 }
 
 function signOut(){
@@ -73,7 +74,6 @@ function signOut(){
 	firebase.auth().signOut();
     alert("Signed Out");
     location.replace("http://127.0.0.1:8080/index");
-    //changePage();
 }
 
 function changePage() {
