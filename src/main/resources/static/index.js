@@ -110,3 +110,9 @@ function registerCoach() {
 	location.replace("http://127.0.0.1:8080/index");
 	console.log("done");
 }
+
+function registerAthlete() {
+	window.alert("New Athlete Registered");
+	location.replace("http://127.0.0.1:8080/athleteList");
+	console.log("done");
+}
