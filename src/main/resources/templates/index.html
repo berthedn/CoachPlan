@@ -164,7 +164,7 @@
 <div >
 	<h1 id="view">Login</h1>
 	<div class="textbox">
-		<input type="text" placeholder="Username" id="email_field">
+		<input type="email" placeholder="Email" id="email_field">
 	</div>
 	
 	<div class="textbox">
@@ -180,19 +180,19 @@
 	<form id="form2" action="#" th:action="@{/registerCoach}" method="GET">
 			<h1 id="view">Register Coach</h1>
 		<div class="textbox">
-			<input type="text" placeholder="Name" name="name" id="name">
+			<input type="text" placeholder="Name" name="name" id="name" required>
 		</div>
 			
 		<div class="textbox">
-			<input type="text" placeholder="Email" name="email" id="email">
+			<input type="email" placeholder="Email" name="email" id="email" required>
 		</div>
 		
 		<div class="textbox">
-			<input type="password" placeholder="Password" name= "password" id="password">
+			<input type="password" placeholder="Password" name= "password" id="password" required>
 		</div>
 		
 		<div class="textbox">
-			<input type="password" placeholder="Confirm Password" id="confirm_field">
+			<input type="password" placeholder="Confirm Password" id="confirm_field" required>
 		</div>
 		
 		<input id="button" class="btn" value="Register" type="submit" onclick=""> <br>
