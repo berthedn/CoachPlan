@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 import com.CoachPlan.dto.CoachDTO;
 
 @Component
-public class CoachServiceStub implements ICoachService {
+public class CoachService implements ICoachService {
 
 	@Override
 	public CoachDTO loginByID(String Id) {
