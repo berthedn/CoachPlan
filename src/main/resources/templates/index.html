@@ -62,7 +62,7 @@
 		var password = document.getElementById("password");
 		var form = document.getElementById("form2");
 		
-		
+		form.style.visibility = "hidden";		
 		initial.style.display="none";
 		login.style.display="inline";
 		view.innerHTML=("Coach Login");
@@ -101,6 +101,15 @@
 		emailField.placeholder=("Email");
 		confirm.style.display="inline";
 	
+	}
+	
+	function unhideRegister(){
+		var form = document.getElementById("form2");
+		var button = document.getElementById("btnRegisterCoach");
+		
+		form.style.visibility = "visible";
+		button.style.visibility = "hidden";
+		
 	}
   
   </script>
@@ -162,6 +171,7 @@
 <div class="login-box" id="login" style="display: none" >
 
 <div >
+<div id="form1">
 	<h1 id="view">Login</h1>
 	<div class="textbox">
 		<input type="email" placeholder="Email" id="email_field">
@@ -176,8 +186,10 @@
 	<div id="user">User</div>
 	<div id="email">email</div>
 	<div id="password">password</div>
-	
-	<form id="form2" action="#" th:action="@{/registerCoach}" method="GET">
+</div>
+<br>
+	<button id="btnRegisterCoach" class="btn" type="button" onclick="unhideRegister()">Register Coach</button>
+	<form id="form2" action="#" th:action="@{/registerCoach}" method="GET" >
 			<h1 id="view">Register Coach</h1>
 		<div class="textbox">
 			<input type="text" placeholder="Name" name="name" id="name" required>

@@ -2,6 +2,9 @@
 @import "https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css";
 @import "https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css";
 
+body {
+	margin: 2%;
+}
 
 table {
 	width: 100%;
@@ -52,18 +55,21 @@ h3{
 	font-size: 40px;	
 }
 
-
-
 .container {
   width: 80%;
-}
-
-.one {
+  height: 200px;
+  padding: 10px;
   float: left;
 }
 
+.one {
+  float:left;
+  width:50%;
+}
+
 .two {
-  float: right;
+  float:left;
+  width:50%;
 }
 
 .login-box{
@@ -74,6 +80,7 @@ h3{
 	transform: translate(-50%,-50%);
 	color: black;
 	display: none;
+	margin-top: 20%;
 }
 
 .login-box-register{
