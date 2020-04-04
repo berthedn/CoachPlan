@@ -12,7 +12,7 @@ function login() {
 	
 	currentEmail = userEmail.toString();
 	
-	var docRef = firebase.firestore().collection("Users").doc(currentEmail)
+	var docRef = firebase.firestore().collection("Users").doc(currentEmail);
 	
 	docRef.get().then((doc) => {
 		if(doc.exists) {
@@ -31,7 +31,7 @@ function login() {
 				console.log("2");
 			} else {
 				window.alert("Wrong Email or Password");
-				location.replace("http://127.0.0.1:8080/index");
+				location.replace("http://127.0.0.1:8080/index#");
 				console.log("3");
 			}
 		}else {
