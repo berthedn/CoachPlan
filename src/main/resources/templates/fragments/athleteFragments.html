@@ -1,0 +1,9 @@
+<!--
+ATHLETE FRAGMENTS
+-->
+
+<!-- ATHLETE LIST ITEM -->
+<tr th:fragment="athlete-list-item">
+    <th class="height-50" th:text="${name}"></th>
+    <th> <a class='btn' th:href="'/edit?athleteId=' + ${id}">Edit</a> </th>
+</tr>

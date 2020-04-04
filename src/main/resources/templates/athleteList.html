@@ -43,23 +43,13 @@
 			<th class="height-100">Athlete</th>
 			<th>Workout Schedule</th>
 		</tr>
-		<tr>
-			<th class="height-50">Athlete 1</th>
-			<th> <a class='btn' href="edit">Edit</a> </th>
-		</tr>
-		<tr>
-			<th class="height-50">Athlete 2</th>
-			<th> <a class='btn' href="edit">Edit</a> </th>
-		</tr>
-		<tr>
-			<th class="height-50">Athlete 3</th>
-			<th> <a class='btn' href="edit">Edit</a> </th>
-		</tr>
-		<tr>
-			<th class="height-50">Athlete 4</th>
-			<th> <a class="btn" href="edit">Edit</a> </th>
-		</tr>
 
+		<!-- return page with list of athletes -->
+		<!-- loop through list with th:each and render fragment (no athlete data yet so just converting to fragment) -->
+		<span th:replace="fragments/athleteFragments.html :: athlete-list-item(name='Athlete 1', id=0)"></span>
+		<span th:replace="fragments/athleteFragments.html :: athlete-list-item(name='Athlete 2', id=1)"></span>
+		<span th:replace="fragments/athleteFragments.html :: athlete-list-item(name='Athlete 3', id=2)"></span>
+		<span th:replace="fragments/athleteFragments.html :: athlete-list-item(name='Athlete 4', id=3)"></span>
 
 	</table>
 	
