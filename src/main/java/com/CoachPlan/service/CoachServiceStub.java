@@ -14,4 +14,10 @@ public class CoachServiceStub implements ICoachService {
 		return coachDTO;
 	}
 
+	@Override
+	public CoachDTO loginByPass(String password) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
