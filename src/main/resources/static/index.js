@@ -22,15 +22,12 @@ function login() {
 			console.log(currentUserId);
 			
 			if(currentUserId == 1 && currentUserPass == userPass) {
-				window.alert("Signed In");
 				location.replace("http://127.0.0.1:8080/athleteList");
 				console.log("1");
 			}else if(currentUserId == 2 && currentUserPass == userPass) {
-				window.alert("Signed In");
 				location.replace("http://127.0.0.1:8080/athlete");
 				console.log("2");
 			} else {
-				window.alert("Wrong Email or Password");
 				location.replace("http://127.0.0.1:8080/index#");
 				console.log("3");
 			}
@@ -60,7 +57,6 @@ function login() {
 function signOut(){
     
 	firebase.auth().signOut();
-    alert("Signed Out");
     location.replace("http://127.0.0.1:8080/index");
 }
 
@@ -101,18 +97,14 @@ function signUp(){
     
     const promise = firebase.auth().createUserWithEmailAndPassword(email, password);
     promise.catch(e => window.alert(e.message));
-    
-    window.alert("Signed Up");
-}
+    }
 
 function registerCoach() {
-	window.alert("New Coach Registered");
 	location.replace("http://127.0.0.1:8080/index");
 	console.log("done");
 }
 
 function registerAthlete() {
-	window.alert("New Athlete Registered");
 	location.replace("http://127.0.0.1:8080/athleteList");
 	console.log("done");
 }
