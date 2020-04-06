@@ -2,43 +2,26 @@ package com.CoachPlan.dto;
 
 import java.util.ArrayList;
 
-public class CoachDTO {
+public class CoachDTO extends User implements IData {
 	
-	private String loginID;
-	//TODO what other fields should a coach DTO have? Should we have a password field?  
 	private String id; // use this as a primary key? 
 	private ArrayList<StudentDTO> studentList;
 	
 	
-	//TODO using this for test only, DELETE AFTERWARDS
-	public CoachDTO() {
-		this.studentList = new ArrayList<StudentDTO>();
-		StudentDTO student1 = new StudentDTO();
-		StudentDTO student2 = new StudentDTO();
-		StudentDTO student3 = new StudentDTO();
+	public CoachDTO(String title, String email, String firstName, String lastName, String password) {
+		super(title, email, firstName, lastName, password);
 		
-		student1.setFirstName("Eder");
-		student1.setLastName("Aguilar");
-		
-		student2.setFirstName("Turin");
-		student2.setLastName("Auguste");
-		
-		student3.setFirstName("Damien");
-		student3.setLastName("Berthenet");
+		studentList = new ArrayList<StudentDTO>();
+		//TODO remove below!!
+		StudentDTO student1 = new StudentDTO("eaguila", "loboeder@yo.com", "Eder", "Aguilar", "crunchies");
+		StudentDTO student2 = new StudentDTO("swerve", "swerver@yo.com", "Khalil", "Auguste", "yolo");
+		StudentDTO student3 = new StudentDTO("damien", "damien@yo.com", "Damien", "Berthenet", "france");
 		
 		studentList.add(student1);
 		studentList.add(student2);
 		studentList.add(student3);
+	}
 
-	}
-	
-	public void setLoginID(String login) {
-		this.loginID = login;
-	}
-	
-	public String getLoginID() {
-		return this.loginID;
-	}
 	
 	//overriding to string method so that we can display the login ID of coach in login page
 	@Override

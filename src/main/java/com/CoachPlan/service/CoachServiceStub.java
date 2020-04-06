@@ -9,8 +9,8 @@ public class CoachServiceStub implements ICoachService {
 
 	@Override
 	public CoachDTO loginByID(String Id) {
-		CoachDTO coachDTO = new CoachDTO();
-		coachDTO.setLoginID(Id);
+		CoachDTO coachDTO = new CoachDTO("mechalobo", "mechalobo@yahoo.com", "Eder", "Aguilar", "fjkldsa;");
+		//coachDTO.setLoginID(Id);
 		return coachDTO;
 	}
 
