@@ -43,24 +43,10 @@
 			<th class="height-100">Athlete</th>
 			<th>Workout Schedule</th>
 		</tr>
-		<tr>
-			<th class="height-50">Athlete 1</th>
+		<tr th:each="student : ${students}">
+			<th class="height-50" th:text="${student}"></th>
 			<th> <a class='btn' href="edit">Edit</a> </th>
 		</tr>
-		<tr>
-			<th class="height-50">Athlete 2</th>
-			<th> <a class='btn' href="edit">Edit</a> </th>
-		</tr>
-		<tr>
-			<th class="height-50">Athlete 3</th>
-			<th> <a class='btn' href="edit">Edit</a> </th>
-		</tr>
-		<tr>
-			<th class="height-50">Athlete 4</th>
-			<th> <a class="btn" href="edit">Edit</a> </th>
-		</tr>
-
-
 	</table>
 	
 	<br>

@@ -1,5 +1,6 @@
 package com.CoachPlan;
 
+import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,8 +9,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.CoachPlan.dto.CoachDTO;
+import com.CoachPlan.dto.StudentDTO;
 import com.CoachPlan.dto.UserDTO;
 import com.CoachPlan.service.FirebaseService;
 import com.CoachPlan.service.ICoachService;
@@ -38,11 +41,21 @@ public class CoachPlanController {
 	}
 	
 	//this will be the initial coach page when coach is logged in
+//	@RequestMapping("/athleteList")
+//	public String athleteList(Model model) {
+//		CoachDTO coachDTO = coachServiceStub.loginByID("mechalobo");
+//		model.addAttribute("coachDTO", coachDTO);
+//		return "athleteList";
+//	}
+	
 	@RequestMapping("/athleteList")
-	public String athleteList(Model model) {
-		CoachDTO coachDTO = coachServiceStub.loginByID("mechalobo");
-		model.addAttribute("coachDTO", coachDTO);
-		return "athleteList";
+	public ModelAndView athleteList() {
+		ModelAndView view = new ModelAndView();
+		CoachDTO coach = coachServiceStub.loginByID("mechalobo");
+		ArrayList<StudentDTO> students = coach.getStudentList();
+		view.setViewName("athleteList");
+		view.addObject("students", students);
+		return view;
 	}
 	
 	//page for coaches to edit their athlete schedules

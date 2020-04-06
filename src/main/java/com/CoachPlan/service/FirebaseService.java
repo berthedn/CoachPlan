@@ -30,6 +30,8 @@ public class FirebaseService {
 		
 		UserDTO user = null;
 		
+		
+		//surround instead with a try catch block instead? Remove if(document.exists)
 		if(document.exists()) {
 			user = document.toObject(UserDTO.class);
 			return user;
@@ -37,4 +39,6 @@ public class FirebaseService {
 			return null;
 		}		
 	}
+	
+	//we should also write a getUserWorkoutDetails() to fetch workouts from database
 }
