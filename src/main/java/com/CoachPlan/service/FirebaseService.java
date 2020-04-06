@@ -31,7 +31,6 @@ public class FirebaseService {
 		IData user = null;
 		
 		
-		//surround instead with a try catch block instead? Remove if(document.exists)
 		if(document.exists()) {
 			user = document.toObject(IData.class);
 			return user;
