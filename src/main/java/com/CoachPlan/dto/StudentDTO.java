@@ -1,13 +1,21 @@
 package com.CoachPlan.dto;
 
+import java.util.ArrayList;
+
 public class StudentDTO {
 	
 	private String loginID;
 	//TODO what other fields should a student have? Password field as well? 
-	private String id; // foreign key for Student
+	private String id; // foreign key for Student to coach
 	private String firstName;
 	private String lastName;
+	private int workoutId; //primary key for connecting Student to workout
+	private ArrayList<WorkoutDTO> schedule;
 	
+	
+	public StudentDTO() {
+		this.schedule = new ArrayList<WorkoutDTO>();
+	}
 	
 	public void setLoginID(String login) {
 		this.loginID = login;
