@@ -40,20 +40,6 @@ function login() {
 	}).catch(function(error) {
 		console.log("Error getting document:", error);
 	});
-	
-		
-	/*firebase.auth().signInWithEmailAndPassword(userEmail, userPass).catch(function(error) {
-		  // Handle Errors here.
-		  var errorCode = error.code;
-		  var errorMessage = error.message;
-		  // ...
-		  
-		  window.alert("Error: " + errorMessage);
-		});
-	
-		window.alert("Signed In");
-		currentEmail = userEmail.toString();
-		changePage();*/
 		
 }
 

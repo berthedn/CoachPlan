@@ -8,14 +8,14 @@ public class CoachDTO extends User implements IData {
 	private ArrayList<StudentDTO> studentList;
 	
 	
-	public CoachDTO(String title, String email, String firstName, String lastName, String password) {
-		super(title, email, firstName, lastName, password);
+	public CoachDTO(String title, String email, String firstName, String password) {
+		super(title, email, firstName, password);
 		
 		studentList = new ArrayList<StudentDTO>();
 		//TODO remove below!!
-		StudentDTO student1 = new StudentDTO("eaguila", "loboeder@yo.com", "Eder", "Aguilar", "crunchies");
-		StudentDTO student2 = new StudentDTO("swerve", "swerver@yo.com", "Khalil", "Auguste", "yolo");
-		StudentDTO student3 = new StudentDTO("damien", "damien@yo.com", "Damien", "Berthenet", "france");
+		StudentDTO student1 = new StudentDTO("eaguila", "loboeder@yo.com", "Eder", "crunchies");
+		StudentDTO student2 = new StudentDTO("swerve", "swerver@yo.com", "Khalil", "yolo");
+		StudentDTO student3 = new StudentDTO("damien", "damien@yo.com", "Damien", "france");
 		
 		studentList.add(student1);
 		studentList.add(student2);

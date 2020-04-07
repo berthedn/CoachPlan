@@ -9,15 +9,15 @@ public class StudentDTO extends User implements IData {
 	private ArrayList<WorkoutDTO> schedule;
 	
 	
-	public StudentDTO(String title, String email, String fName, String lName, String password) {
-		super(title, email, fName, lName, password);
+	public StudentDTO(String title, String email, String fName, String password) {
+		super(title, email, fName, password);
 		this.schedule = new ArrayList<WorkoutDTO>();
 	}
 
 	
 	@Override
 	public String toString() {
-		return this.getFirstName() + " " + this.getLastName();
+		return this.getFirstName();
 	}
 
 }

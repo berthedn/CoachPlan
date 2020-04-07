@@ -65,9 +65,9 @@ public class CoachPlanController {
 	
 	//Add new coach to database
 	@RequestMapping(value="/registerCoach", method=RequestMethod.GET)
-	public String registerCoach(@RequestParam(value="firstName") String fName, @RequestParam(value="lastname") String lName,  @RequestParam(value="email") String email, @RequestParam(value="password") String password) throws InterruptedException, ExecutionException {
+	public String registerCoach(@RequestParam(value="name") String fName, @RequestParam(value="email") String email, @RequestParam(value="password") String password) throws InterruptedException, ExecutionException {
 		String ID = "1";
-		CoachDTO newUser = new CoachDTO(ID, email, fName, lName, password);
+		CoachDTO newUser = new CoachDTO(ID, email, fName, password);
 		firebaseService.saveUserDetails(newUser);
 		return "index";
 	}
@@ -79,9 +79,9 @@ public class CoachPlanController {
 	
 	//Add new athlete to database
 	@RequestMapping(value="/addAthlete", method=RequestMethod.GET)
-	public String registerAthlete(@RequestParam(value="firstName") String firstName, @RequestParam(value="lastName") String lastName, @RequestParam(value="email") String email, @RequestParam(value="password") String password) throws InterruptedException, ExecutionException {
+	public String registerAthlete(@RequestParam(value="name") String firstName, @RequestParam(value="email") String email, @RequestParam(value="password") String password) throws InterruptedException, ExecutionException {
 		String ID = "2";
-		StudentDTO newUser = new StudentDTO(ID, email, firstName, lastName, password);
+		StudentDTO newUser = new StudentDTO(ID, email, firstName, password);
 		firebaseService.saveUserDetails(newUser);
 		return "athleteList";
 	}
