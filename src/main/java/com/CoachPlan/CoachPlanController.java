@@ -23,7 +23,7 @@ public class CoachPlanController {
 	//(Service stub will be used for backend database calls, think CRUD (create, read update, delete)). 
 	//Also need to come up with a DTO class. Do we want to use different DTO classes for coach and student as well? 
 	@Autowired
-	private ICoachService coachServiceStub;
+	private ICoachService coachService;
 	
 	@Autowired
 	FirebaseService firebaseService;
@@ -42,7 +42,7 @@ public class CoachPlanController {
 	//this will be the initial coach page when coach is logged in
 //	@RequestMapping("/athleteList")
 //	public String athleteList(Model model) {
-//		CoachDTO coachDTO = coachServiceStub.loginByID("mechalobo");
+//		CoachDTO coachDTO = coachService.loginByID("mechalobo");
 //		model.addAttribute("coachDTO", coachDTO);
 //		return "athleteList";
 //	}
@@ -50,7 +50,7 @@ public class CoachPlanController {
 	@RequestMapping("/athleteList")
 	public ModelAndView athleteList() {
 		ModelAndView view = new ModelAndView();
-		CoachDTO coach = coachServiceStub.loginByID("mechalobo");
+		CoachDTO coach = coachService.loginByID("mechalobo");
 		ArrayList<StudentDTO> students = coach.getStudentList();
 		view.setViewName("athleteList");
 		view.addObject("students", students);
