@@ -22,11 +22,11 @@ function login() {
 			console.log(currentUserId);
 			
 			if(currentUserId == 1 && currentUserPass == userPass) {
-				window.alert("Signed In");
+				//window.alert("Signed In");
 				location.replace("http://127.0.0.1:8080/athleteList");
 				console.log("1");
 			}else if(currentUserId == 2 && currentUserPass == userPass) {
-				window.alert("Signed In");
+				//window.alert("Signed In");
 				location.replace("http://127.0.0.1:8080/athlete");
 				console.log("2");
 			} else {
