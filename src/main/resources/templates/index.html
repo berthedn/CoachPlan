@@ -158,20 +158,22 @@
 <div class="login-box" id="login" style="display: none" >
 
 <div >
-	<h1 id="view">Login</h1>
-	<div class="textbox">
-		<input type="email" placeholder="Email" id="email_field">
-	</div>
-	
-	<div class="textbox">
-		<input type="password" placeholder="Password" id="password_field">
-	</div>
-	
-	<input id="button" class="btn" value="Login" type="button" onclick="login()"> <br>
-	<!-- <input class="btn" value="Logout" type="button" onclick="signOut()"> -->
-	<div id="user">User</div>
-	<div id="email">email</div>
-	<div id="password">password</div>
+	<form action="#" th:action="@{/setUser}" method="GET">
+		<h1 id="view">Login</h1>
+		<div class="textbox">
+			<input type="email" placeholder="Email" name="email_field" id="email_field">
+		</div>
+		
+		<div class="textbox">
+			<input type="password" placeholder="Password" id="password_field">
+		</div>
+		
+		<input id="logButton" class="btn" value="Login" type="submit" onclick="login()"> <br>
+		<!-- <input class="btn" value="Logout" type="button" onclick="signOut()"> -->
+		<div id="user">User</div>
+		<div id="email">email</div>
+		<div id="password">password</div>
+	</form>
 	
 	<form id="form2" action="#" th:action="@{/registerCoach}" method="GET">
 			<h1 id="view">Register Coach</h1>
@@ -191,7 +193,7 @@
 			<input type="password" placeholder="Confirm Password" id="confirm_field" required>
 		</div>
 		
-		<input id="button" class="btn" value="Register" type="submit" onclick="registerCoach()"> <br>
+		<input id="regButton" class="btn" value="Register" type="submit" onclick="registerCoach()"> <br>
 	</form>
 
 </div>

@@ -28,9 +28,20 @@ public class CoachPlanController {
 	@Autowired
 	FirebaseService firebaseService;
 	
+	String sessionId = "";
+	String sessionName = "";
+	
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
 	public String index() {
+		sessionId = "";
+		sessionName = "";
 		return "index";
+	}
+	
+	@RequestMapping(value="/setUser", method=RequestMethod.GET)
+	public void setCurrentUser(@RequestParam(value="email_field") String email) throws InterruptedException, ExecutionException {
+		sessionId = firebaseService.getUserId(email);
+		sessionName = firebaseService.getUserName(email);
 	}
 	
 	//this will be the initial athlete page when logged in as an athlete
@@ -51,7 +62,6 @@ public class CoachPlanController {
 	public ModelAndView athleteList() {
 		ModelAndView view = new ModelAndView();
 		CoachDTO coach = coachService.loginByID("mechalobo");
-		//firebase method to return list of athletes for specific user
 		ArrayList<StudentDTO> students = coach.getStudentList();
 		view.setViewName("athleteList");
 		view.addObject("students", students);
@@ -84,7 +94,7 @@ public class CoachPlanController {
 	@RequestMapping(value="/addAthlete", method=RequestMethod.GET)
 	public String registerAthlete(@RequestParam(value="name") String firstName, @RequestParam(value="email") String email, @RequestParam(value="password") String password) throws InterruptedException, ExecutionException {
 		String ID = "2";
-		String coachId = "0";
+		String coachId = sessionId;
 		StudentDTO newUser = new StudentDTO(ID, email, firstName, password, coachId);
 		firebaseService.saveUserDetails(newUser);
 		return "athleteList";
