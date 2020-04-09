@@ -2,6 +2,7 @@
 var currentEmail;
 var currentUserId;	
 var currentUserPass;
+var reference;
 
 function login() {
 	
@@ -12,8 +13,23 @@ function login() {
 	
 	currentEmail = userEmail.toString();
 	
-	var docRef = firebase.firestore().collection("Users").doc(currentEmail)
+/*	//Queries the database for an entry with the corresponding email
+	firebase.firestore().collection("Users").where("email", "==", currentEmail)
+    .get()
+    .then(function(querySnapshot) {
+        querySnapshot.forEach(function(doc) {
+            // doc.data() is never undefined for query doc snapshots
+        	reference = doc.id;
+        	console.log(reference);
+        });
+    })
+    .catch(function(error) {
+        console.log("Error getting documents: ", error);
+    });*/
 	
+	var docRef = firebase.firestore().collection("Users").doc(currentEmail);
+	console.log(docRef);
+
 	docRef.get().then((doc) => {
 		if(doc.exists) {
 			console.log(doc.data());
@@ -80,7 +96,7 @@ function changePage() {
 	});
 }
 
-function signUp(){
+function signUp() {
     
     var email = document.getElementById("email_field").value;
     var password = document.getElementById("password_field").value;
