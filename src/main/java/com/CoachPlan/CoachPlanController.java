@@ -50,14 +50,6 @@ public class CoachPlanController {
 		return "athlete";
 	}
 	
-	//this will be the initial coach page when coach is logged in
-//	@RequestMapping("/athleteList")
-//	public String athleteList(Model model) {
-//		CoachDTO coachDTO = coachService.loginByID("mechalobo");
-//		model.addAttribute("coachDTO", coachDTO);
-//		return "athleteList";
-//	}
-	
 	@RequestMapping("/athleteList")
 	public ModelAndView athleteList() {
 		ModelAndView view = new ModelAndView();
