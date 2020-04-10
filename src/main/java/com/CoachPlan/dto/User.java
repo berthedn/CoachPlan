@@ -7,14 +7,15 @@ public abstract class User {
 	private String email;
 	private String firstName;
 	private String password;
-	private String loginId;
+	private String coachId;
 
 		
-	public User(String title, String email, String fName, String password) {
+	public User(String title, String email, String fName, String password, String coachId) {
 			this.email = email;
 			this.firstName = fName;
 			this.password = password;
 			this.title = title;
+			this.coachId = coachId;
 	}
 
 	public String getTitle() {
@@ -49,12 +50,12 @@ public abstract class User {
 			this.password = password;
 	}
 		
-	public void setCoachID(String login) {
-			this.loginId = login;
+	public void setCoachID(String coach) {
+			this.coachId = coach;
 	}
 		
-	public String getLoginID() {
-			return this.loginId;
+	public String getCoachID() {
+			return this.coachId;
 	}
 	
 

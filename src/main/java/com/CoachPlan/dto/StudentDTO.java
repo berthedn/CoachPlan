@@ -6,11 +6,11 @@ public class StudentDTO extends User implements IData {
 	
 	private String id; // foreign key for Student to coach
 	private int workoutId; //primary key for connecting Student to workout
-	private ArrayList<WorkoutDTO> schedule;
+	private ArrayList<WorkoutDTO> schedule;//schedule
 	
 	
-	public StudentDTO(String title, String email, String fName, String password) {
-		super(title, email, fName, password);
+	public StudentDTO(String title, String email, String fName, String password, String coachId) {
+		super(title, email, fName, password, coachId);
 		this.schedule = new ArrayList<WorkoutDTO>();
 	}
 
