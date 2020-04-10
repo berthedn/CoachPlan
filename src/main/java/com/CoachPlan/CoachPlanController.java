@@ -53,10 +53,12 @@ public class CoachPlanController {
 	@RequestMapping("/athleteList")
 	public ModelAndView athleteList() {
 		ModelAndView view = new ModelAndView();
-		CoachDTO coach = coachService.loginByID("mechalobo");
+		//CoachDTO coach = coachService.loginByID("mechalobo");
+		CoachDTO coach = new CoachDTO("Mr", "loboeder@hello", "eaguila", "jklfds;a", "43214");
 		ArrayList<StudentDTO> students = coach.getStudentList();
 		view.setViewName("athleteList");
 		view.addObject("students", students);
+		view.addObject("coach", coach);
 		return view;
 	}
 	

@@ -18,11 +18,8 @@ public class CoachDTO extends User implements IData {
 	//overriding to string method so that we can display the login ID of coach in login page
 	@Override
 	public String toString() {
-		String data = "";
-		for(StudentDTO student: this.studentList) {
-			data += student.toString() + " ";
-		}
-		return data;
+		
+		return this.getFirstName();
 	}
 	
 	public void setStudentList(ArrayList<StudentDTO> list) {
