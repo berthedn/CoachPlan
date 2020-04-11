@@ -19,7 +19,7 @@ public class CoachDTO extends User implements IData {
 	@Override
 	public String toString() {
 		
-		return this.getFirstName();
+		return this.getUserName();
 	}
 	
 	public void setStudentList(ArrayList<StudentDTO> list) {

@@ -33,8 +33,6 @@ public class CoachPlanController {
 	
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
 	public String index() {
-		sessionId = "";
-		sessionName = "";
 		return "index";
 	}
 	
@@ -51,11 +49,12 @@ public class CoachPlanController {
 	}
 	
 	@RequestMapping("/athleteList")
-	public ModelAndView athleteList() {
-		ModelAndView view = new ModelAndView();
-		//CoachDTO coach = coachService.loginByID("mechalobo");
+	public ModelAndView athleteList() throws InterruptedException, ExecutionException {
+		//CoachDTO coach = firebaseService.getCoach(sessionName, sessionId);
+		//ArrayList<StudentDTO> students = firebaseService.getStudentList(sessionId);
 		CoachDTO coach = new CoachDTO("Mr", "loboeder@hello", "eaguila", "jklfds;a", "43214");
 		ArrayList<StudentDTO> students = coach.getStudentList();
+		ModelAndView view = new ModelAndView();
 		view.setViewName("athleteList");
 		view.addObject("students", students);
 		view.addObject("coach", coach);
@@ -70,11 +69,11 @@ public class CoachPlanController {
 	
 	//Add new coach to database
 	@RequestMapping(value="/registerCoach", method=RequestMethod.GET)
-	public String registerCoach(@RequestParam(value="name") String fName, @RequestParam(value="email") String email, @RequestParam(value="password") String password) throws InterruptedException, ExecutionException {
+	public String registerCoach(@RequestParam(value="name") String userName, @RequestParam(value="email") String email, @RequestParam(value="password") String password) throws InterruptedException, ExecutionException {
 		String ID = "1";
 		String coachId = firebaseService.getNextId();
 		
-		CoachDTO newUser = new CoachDTO(ID, email, fName, password, coachId);
+		CoachDTO newUser = new CoachDTO(ID, email, userName, password, coachId);
 		firebaseService.saveUserDetails(newUser);
 		return "index";
 	}
@@ -86,10 +85,10 @@ public class CoachPlanController {
 	
 	//Add new athlete to database
 	@RequestMapping(value="/addAthlete", method=RequestMethod.GET)
-	public String registerAthlete(@RequestParam(value="name") String firstName, @RequestParam(value="email") String email, @RequestParam(value="password") String password) throws InterruptedException, ExecutionException {
+	public String registerAthlete(@RequestParam(value="name") String userName, @RequestParam(value="email") String email, @RequestParam(value="password") String password) throws InterruptedException, ExecutionException {
 		String ID = "2";
 		String coachId = sessionId;
-		StudentDTO newUser = new StudentDTO(ID, email, firstName, password, coachId);
+		StudentDTO newUser = new StudentDTO(ID, email, userName, password, coachId);
 		firebaseService.saveUserDetails(newUser);
 		return "athleteList";
 	}

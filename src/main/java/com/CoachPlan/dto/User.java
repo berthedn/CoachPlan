@@ -5,14 +5,14 @@ public abstract class User {
 
 	private String title;
 	private String email;
-	private String firstName;
+	private String userName;
 	private String password;
 	private String coachId;
 
 		
-	public User(String title, String email, String fName, String password, String coachId) {
+	public User(String title, String email, String userName, String password, String coachId) {
 			this.email = email;
-			this.firstName = fName;
+			this.userName = userName;
 			this.password = password;
 			this.title = title;
 			this.coachId = coachId;
@@ -26,12 +26,12 @@ public abstract class User {
 			this.title = title;
 	}
 
-	public String getFirstName() {
-			return this.firstName;
+	public String getUserName() {
+			return this.userName;
 	}
 
-	public void setFirstName(String name) {
-			this.firstName = name;
+	public void setUserName(String name) {
+			this.userName = name;
 	}
 
 	public String getEmail() {

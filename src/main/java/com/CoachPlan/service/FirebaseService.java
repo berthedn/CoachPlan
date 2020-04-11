@@ -1,10 +1,13 @@
 package com.CoachPlan.service;
 
+import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 
 import org.springframework.stereotype.Service;
 
+import com.CoachPlan.dto.CoachDTO;
 import com.CoachPlan.dto.IData;
+import com.CoachPlan.dto.StudentDTO;
 import com.google.api.core.ApiFuture;
 import com.google.cloud.firestore.CollectionReference;
 import com.google.cloud.firestore.DocumentReference;
@@ -67,10 +70,63 @@ public class FirebaseService {
 		ApiFuture<QuerySnapshot> future = query.get();
 		
 		for (DocumentSnapshot document : future.get().getDocuments()) {
-			sessionName = document.getString("name");
+			sessionName = document.getString("userName");
 		}
 		
 		return sessionName;
+	}
+	
+	public CoachDTO getCoach(String sessionName, String sessionId) throws InterruptedException, ExecutionException {
+		String title = "";
+		String email = "";
+		String userName = "";
+		String password = "";
+		String coachId = "";
+		
+		CollectionReference collectionRef = FirestoreClient.getFirestore().collection("Users");
+		Query query = collectionRef.whereEqualTo("userName", sessionName).whereEqualTo("coachID", sessionId);
+		ApiFuture<QuerySnapshot> future = query.get();
+		
+		for (DocumentSnapshot document : future.get().getDocuments()) {
+			title = document.getString("title");
+			email = document.getString("email");
+			userName = document.getString("userName");
+			password = document.getString("password");
+			coachId = document.getString("coachID");
+		}
+		
+		CoachDTO currentUser = new CoachDTO(title, email, userName, password, coachId);
+		
+		return currentUser;
+	}
+	
+	public ArrayList<StudentDTO> getStudentList(String sessionId) throws InterruptedException, ExecutionException {
+		ArrayList<StudentDTO> studentList = new ArrayList<StudentDTO>();
+		
+		String title = "";
+		String email = "";
+		String userName = "";
+		String password = "";
+		String coachId = "";
+		
+		CollectionReference collectionRef = FirestoreClient.getFirestore().collection("Users");
+		Query query = collectionRef.whereEqualTo("title", "2").whereEqualTo("coachID", sessionId);
+		ApiFuture<QuerySnapshot> future = query.get();
+		
+		for (DocumentSnapshot document : future.get().getDocuments()) {
+			title = document.getString("title");
+			email = document.getString("email");
+			userName = document.getString("userName");
+			password = document.getString("password");
+			coachId = document.getString("coachID");
+			
+			StudentDTO student = new StudentDTO(title, email, userName, password, coachId);
+			
+			studentList.add(student);
+			
+		}
+		
+		return studentList;
 	}
 	
 	public IData getUserDetails(String email) throws InterruptedException, ExecutionException {
