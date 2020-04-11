@@ -1,23 +1,30 @@
 package com.CoachPlan.dto;
 
-import java.util.ArrayList;
 
 public class StudentDTO extends User implements IData {
 	
-	private String id; // foreign key for Student to coach
-	private int workoutId; //primary key for connecting Student to workout
-	private ArrayList<WorkoutDTO> schedule;
+	private String athleteID; //primary key for connecting Student to workout
 	
 	
-	public StudentDTO(String title, String email, String fName, String password, String coachId) {
+	public StudentDTO(String title, String email, String fName, String password, String coachId, String athleteID) {
 		super(title, email, fName, password, coachId);
-		this.schedule = new ArrayList<WorkoutDTO>();
+		this.setAthleteID(athleteID);
 	}
 
 	
 	@Override
 	public String toString() {
 		return this.getUserName();
+	}
+
+
+	public String getAthleteID() {
+		return athleteID;
+	}
+
+
+	public void setAthleteID(String athleteID) {
+		this.athleteID = athleteID;
 	}
 
 }

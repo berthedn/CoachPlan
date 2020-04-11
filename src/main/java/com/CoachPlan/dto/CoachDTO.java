@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 public class CoachDTO extends User implements IData {
 	
-	private String id; // use this as a primary key? 
 	private ArrayList<StudentDTO> studentList;
 	
 	

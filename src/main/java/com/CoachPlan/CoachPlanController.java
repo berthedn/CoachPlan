@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.CoachPlan.dto.CoachDTO;
 import com.CoachPlan.dto.StudentDTO;
+import com.CoachPlan.dto.WorkoutDTO;
 import com.CoachPlan.service.FirebaseService;
 import com.CoachPlan.service.ICoachService;
 
@@ -33,13 +34,17 @@ public class CoachPlanController {
 	
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
 	public String index() {
+		sessionId = "";
+		sessionName = "";
+		
 		return "index";
 	}
 	
 	@RequestMapping(value="/setUser", method=RequestMethod.GET)
-	public void setCurrentUser(@RequestParam(value="email_field") String email) throws InterruptedException, ExecutionException {
+	public void setCurrentUser(@RequestParam(value="email") String email) throws InterruptedException, ExecutionException {
 		sessionId = firebaseService.getUserId(email);
 		sessionName = firebaseService.getUserName(email);
+		
 	}
 	
 	//this will be the initial athlete page when logged in as an athlete
@@ -74,7 +79,7 @@ public class CoachPlanController {
 		String coachId = firebaseService.getNextId();
 		
 		CoachDTO newUser = new CoachDTO(ID, email, userName, password, coachId);
-		firebaseService.saveUserDetails(newUser);
+		firebaseService.saveCoachDetails(newUser);
 		return "index";
 	}
 	
@@ -88,8 +93,10 @@ public class CoachPlanController {
 	public String registerAthlete(@RequestParam(value="name") String userName, @RequestParam(value="email") String email, @RequestParam(value="password") String password) throws InterruptedException, ExecutionException {
 		String ID = "2";
 		String coachId = sessionId;
-		StudentDTO newUser = new StudentDTO(ID, email, userName, password, coachId);
-		firebaseService.saveUserDetails(newUser);
+		String athleteID = userName + " " + password;
+		WorkoutDTO workout = new WorkoutDTO(athleteID,"10 Jumping Jacks","10 Squats","10 minute run","10 Crunches","10 Push-ups","Rest","Rest");
+		StudentDTO newUser = new StudentDTO(ID, email, userName, password, coachId, athleteID);
+		firebaseService.saveAthleteDetails(newUser, workout);
 		return "athleteList";
 	}
 	
