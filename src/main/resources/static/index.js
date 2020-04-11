@@ -109,7 +109,7 @@ function signUp() {
 
 function registerCoach() {
 	window.alert("New Coach Registered");
-	location.replace("http://127.0.0.1:8080/index");
+	location.replace("http://127.0.0.1:8080/index#");
 	console.log("done");
 }
 
