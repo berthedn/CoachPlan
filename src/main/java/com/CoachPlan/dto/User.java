@@ -17,6 +17,17 @@ public abstract class User {
 			this.title = title;
 			this.coachId = coachId;
 	}
+	
+	public User(String email, String userName, String password, String coachId) {
+		this.email = email;
+		this.userName = userName;
+		this.password = password;
+		this.coachId = coachId;
+	}
+	
+	public User(String email) {
+		this.email = email;
+	}
 
 	public String getTitle() {
 			return title;

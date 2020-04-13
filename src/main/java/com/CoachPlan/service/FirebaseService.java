@@ -84,15 +84,15 @@ public class FirebaseService {
 		return sessionName;
 	}
 	
-	public CoachDTO getCoach(String sessionName, String sessionId) throws InterruptedException, ExecutionException {
+	//this needs work
+	public CoachDTO getCoach(String email) throws InterruptedException, ExecutionException {
 		String title = "";
-		String email = "";
 		String userName = "";
 		String password = "";
 		String coachId = "";
 		
 		CollectionReference collectionRef = FirestoreClient.getFirestore().collection("Users");
-		Query query = collectionRef.whereEqualTo("userName", sessionName).whereEqualTo("coachID", sessionId);
+		Query query = collectionRef.whereEqualTo("email", email);
 		ApiFuture<QuerySnapshot> future = query.get();
 		
 		for (DocumentSnapshot document : future.get().getDocuments()) {
@@ -103,7 +103,7 @@ public class FirebaseService {
 			coachId = document.getString("coachID");
 		}
 		
-		CoachDTO currentUser = new CoachDTO(title, email, userName, password, coachId);
+		CoachDTO currentUser = new CoachDTO(email, userName, password, coachId);
 		
 		return currentUser;
 	}

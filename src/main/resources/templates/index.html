@@ -27,12 +27,14 @@
 	  	  
 	  // Initialize Firebase
 	  firebase.initializeApp(firebaseConfig);
+	  
+	  
   </script>
 	
   <script src="index.js"></script>
   
   <script type="text/javascript">
-
+  
 
 	function student(){
 		var login = document.getElementById("login");
@@ -103,7 +105,10 @@
 	
 	}
   
+  
   </script>
+  
+
 </head>
 
 
@@ -158,11 +163,13 @@
 <div class="login-box" id="login" style="display: none" >
 
 <div >
-	<!-- <form action="#" th:action="@{/setUser}" method="GET"> -->
+	<th:block xmlns:th="http://www.thymeleaf.org">
+	<form action="#" th:action="@{/athleteList}" th:object="${coachDTO}" method="GET">
+	
 	<div>
 		<h1 id="view">Login</h1>
 		<div class="textbox">
-			<input type="email" placeholder="Email" name="email" id="email_field">
+			<input type="email" placeholder="Email" name="email" id="email_field"  >
 		</div>
 		
 		<div class="textbox">
@@ -175,9 +182,9 @@
 		<div id="email">email</div>
 		<div id="password">password</div>
 	</div>
-	<!-- </form> -->
+	 </form>
 	
-	<form id="form2" action="#" th:action="@{/registerCoach}" method="GET">
+	<form id="form2" action="#" th:action="@{/registerCoach}"  method="GET">
 			<h1 id="view">Register Coach</h1>
 		<div class="textbox">
 			<input type="text" placeholder="Name" name="name" id="name" required>
@@ -197,9 +204,29 @@
 		
 		<input id="regButton" class="btn" value="Register" type="submit" onclick="registerCoach()"> <br>
 	</form>
-
+	</th:block>
 </div>
 
 </div>
+
+  <script type="text/javascript">
+	
+	function login(){
+	
+	const email = document.getElementById("email_field").value;
+	const password = document.getElementById("password_field).value;
+	
+	firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
+  		// Handle Errors here.
+  		var errorCode = error.code;
+  		var errorMessage = error.message;
+  		alert(errorMessage);
+  		// ...
+	});
+	
+	
+	}
+  
+  </script>
 
 </html>

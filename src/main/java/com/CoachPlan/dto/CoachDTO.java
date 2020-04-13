@@ -12,6 +12,14 @@ public class CoachDTO extends User implements IData {
 		
 		studentList = new ArrayList<StudentDTO>();
 	}
+	
+	public CoachDTO(String email) {
+		super(email);
+	}
+	
+	public CoachDTO(String email, String userName, String password, String coachId) {
+		super(email, userName, password, coachId);
+	}
 
 	
 	//overriding to string method so that we can display the login ID of coach in login page

@@ -54,10 +54,9 @@ public class CoachPlanController {
 	}
 	
 	@RequestMapping("/athleteList")
-	public ModelAndView athleteList() throws InterruptedException, ExecutionException {
-		//CoachDTO coach = firebaseService.getCoach(sessionName, sessionId);
+	public ModelAndView athleteList(@RequestParam(value="email") String email) throws InterruptedException, ExecutionException {
+		CoachDTO coach = firebaseService.getCoach(email);
 		//ArrayList<StudentDTO> students = firebaseService.getStudentList(sessionId);
-		CoachDTO coach = new CoachDTO("Mr", "loboeder@hello", "eaguila", "jklfds;a", "43214");
 		ArrayList<StudentDTO> students = coach.getStudentList();
 		ModelAndView view = new ModelAndView();
 		view.setViewName("athleteList");
