@@ -34,8 +34,7 @@ public class CoachPlanController {
 	
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
 	public String index() {
-		sessionId = "";
-		sessionName = "";
+
 		
 		return "index";
 	}
@@ -57,11 +56,12 @@ public class CoachPlanController {
 	public ModelAndView athleteList(@RequestParam(value="email") String email) throws InterruptedException, ExecutionException {
 		CoachDTO coach = firebaseService.getCoach(email);
 		//ArrayList<StudentDTO> students = firebaseService.getStudentList(sessionId);
-		ArrayList<StudentDTO> students = coach.getStudentList();
+		ArrayList<StudentDTO> students = firebaseService.getStudentList(coach.getcoachId());
 		ModelAndView view = new ModelAndView();
 		view.setViewName("athleteList");
 		view.addObject("students", students);
 		view.addObject("coach", coach);
+		
 		return view;
 	}
 	
@@ -72,8 +72,8 @@ public class CoachPlanController {
 	}
 	
 	//Add new coach to database
-	@RequestMapping(value="/registerCoach", method=RequestMethod.GET)
-	public String registerCoach(@RequestParam(value="name") String userName, @RequestParam(value="email") String email, @RequestParam(value="password") String password) throws InterruptedException, ExecutionException {
+	@RequestMapping(value="/registerCoach", method=RequestMethod.POST)
+	public String registerCoach(@RequestParam(value="name") String userName, @RequestParam(defaultValue="email") String email, @RequestParam(value="password") String password) throws InterruptedException, ExecutionException {
 		String ID = "1";
 		String coachId = firebaseService.getNextId();
 		
@@ -83,20 +83,35 @@ public class CoachPlanController {
 	}
 	
 	@RequestMapping("/registerAthlete")
-	public String registerAthlete() {
-		return "registerAthlete";
+	public ModelAndView registerAthlete(@RequestParam(value="coachEmail") String coachEmail) {
+		try {
+			CoachDTO coach = firebaseService.getCoach(coachEmail);
+			ModelAndView view = new ModelAndView();
+			view.addObject("coach", coach);
+			return view;
+		} catch (InterruptedException | ExecutionException e) {
+			e.printStackTrace();
+		}
+		ModelAndView view = new ModelAndView();
+		return view;
 	}
 	
 	//Add new athlete to database
 	@RequestMapping(value="/addAthlete", method=RequestMethod.GET)
-	public String registerAthlete(@RequestParam(value="name") String userName, @RequestParam(value="email") String email, @RequestParam(value="password") String password) throws InterruptedException, ExecutionException {
+	public ModelAndView registerAthlete(@RequestParam(value="name") String userName, @RequestParam(value="email") String email, @RequestParam(value="password") String password, @RequestParam(value="id") String id) throws InterruptedException, ExecutionException {		
 		String ID = "2";
-		String coachId = sessionId;
+		//NOTE: ID is the coachId, let's query that and pull the coach to redirect back to correct page
 		String athleteID = userName + " " + password;
 		WorkoutDTO workout = new WorkoutDTO(athleteID,"10 Jumping Jacks","10 Squats","10 minute run","10 Crunches","10 Push-ups","Rest","Rest");
-		StudentDTO newUser = new StudentDTO(ID, email, userName, password, coachId, athleteID);
+		StudentDTO newUser = new StudentDTO(ID, email, userName, password, id, athleteID);
 		firebaseService.saveAthleteDetails(newUser, workout);
-		return "athleteList";
+		CoachDTO coach = firebaseService.getCoach(id);
+		String emailURL = coach.getEmail();
+		System.out.println(emailURL);
+		ModelAndView view = new ModelAndView();
+		view.setViewName("index");
+		view.addObject("coach", coach);
+		return view;
 	}
 	
 }

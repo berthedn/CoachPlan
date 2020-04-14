@@ -7,7 +7,7 @@ public abstract class User {
 	private String email;
 	private String userName;
 	private String password;
-	private String coachId;
+	public String coachId;
 
 		
 	public User(String title, String email, String userName, String password, String coachId) {
@@ -61,11 +61,11 @@ public abstract class User {
 			this.password = password;
 	}
 		
-	public void setCoachID(String coach) {
+	public void setcoachId(String coach) {
 			this.coachId = coach;
 	}
 		
-	public String getCoachID() {
+	public String getcoachId() {
 			return this.coachId;
 	}
 	

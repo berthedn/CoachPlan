@@ -47,6 +47,7 @@
 		<div class="textbox">
 			<input type="password" placeholder="Confirm Password" id="password_field" required>
 		</div>
+		<input type = "hidden" id="hiddenField" name="id" th:value="${coach.coachId}">
 		
 		<input id="button" class="btn" value="Create" type="submit" onclick="registerAthlete()"> <br>
 	</form>

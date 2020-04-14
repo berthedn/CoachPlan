@@ -23,16 +23,18 @@ import com.google.firebase.cloud.FirestoreClient;
 @Service
 public class FirebaseService {
 	
+	//for new coach
 	public String saveCoachDetails(IData user) throws InterruptedException, ExecutionException {
 		Firestore dbFirestore = FirestoreClient.getFirestore();
 		ApiFuture<WriteResult> collectionApiFuture = dbFirestore.collection("Users").document(user.getEmail()).set(user);
 		return collectionApiFuture.get().getUpdateTime().toString();
 	}
 	
+	//for new athlete
 	public String saveAthleteDetails(IData user, WorkoutDTO workout) throws InterruptedException, ExecutionException {
 		Firestore dbFirestore = FirestoreClient.getFirestore();
-		ApiFuture<WriteResult> collectionApiFuture1 = dbFirestore.collection("Users").document(user.getEmail()).set(user);
-		ApiFuture<WriteResult> collectionApiFuture2 = dbFirestore.collection("Workouts").document(user.getEmail()).set(workout);
+		ApiFuture<WriteResult> collectionApiFuture1 = dbFirestore.collection("Students").document(user.getEmail()).set(user);
+		//ApiFuture<WriteResult> collectionApiFuture2 = dbFirestore.collection("Workouts").document(user.getEmail()).set(workout);
 		return collectionApiFuture1.get().getUpdateTime().toString();
 	}
 	
@@ -108,18 +110,37 @@ public class FirebaseService {
 		return currentUser;
 	}
 	
-	public ArrayList<StudentDTO> getStudentList(String sessionId) throws InterruptedException, ExecutionException {
+	public CoachDTO getCoachByID(String coachId) throws InterruptedException, ExecutionException {
+		String userName = "";
+		String password = "";
+		String email = "";
+		CollectionReference collectionRef = FirestoreClient.getFirestore().collection("Users");
+		Query query = collectionRef.whereEqualTo("coachId", coachId);
+		ApiFuture<QuerySnapshot> future = query.get();
+		
+		for (DocumentSnapshot document : future.get().getDocuments()) {
+			email = document.getString("email");
+			userName = document.getString("userName");
+			password = document.getString("password");
+			coachId = document.getString("coachID");
+		}
+		
+		CoachDTO currentUser = new CoachDTO(email, userName, password, coachId);
+		
+		return currentUser;
+	}
+	
+	public ArrayList<StudentDTO> getStudentList(String coachId) throws InterruptedException, ExecutionException {
 		ArrayList<StudentDTO> studentList = new ArrayList<StudentDTO>();
 		
 		String title = "";
 		String email = "";
 		String userName = "";
 		String password = "";
-		String coachId = "";
 		String athleteId = "";
 		
-		CollectionReference collectionRef = FirestoreClient.getFirestore().collection("Users");
-		Query query = collectionRef.whereEqualTo("title", "2").whereEqualTo("coachID", sessionId);
+		CollectionReference collectionRef = FirestoreClient.getFirestore().collection("Students");
+		Query query = collectionRef.whereEqualTo("coachId", coachId);
 		ApiFuture<QuerySnapshot> future = query.get();
 		
 		for (DocumentSnapshot document : future.get().getDocuments()) {
@@ -139,6 +160,7 @@ public class FirebaseService {
 		return studentList;
 	}
 	
+	// is this for students? 
 	public String getUserDetails(String email) throws InterruptedException, ExecutionException {
 		
 		String title = "";

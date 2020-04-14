@@ -30,7 +30,9 @@
 	<h1>Coach login Page</h1>
 	<h2 th:text="${coach}"></h2>
 
-	<a class="btn" href="registerAthlete">Add Athlete</a>
+	<a class="btn" th:href="@{/registerAthlete(coachEmail=${coach.email})}">Add Athlete</a>
+	
+
 
 	<table>
 		<tr>
