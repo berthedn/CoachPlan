@@ -105,11 +105,11 @@ public class CoachPlanController {
 		WorkoutDTO workout = new WorkoutDTO(athleteID,"10 Jumping Jacks","10 Squats","10 minute run","10 Crunches","10 Push-ups","Rest","Rest");
 		StudentDTO newUser = new StudentDTO(ID, email, userName, password, id, athleteID);
 		firebaseService.saveAthleteDetails(newUser, workout);
-		CoachDTO coach = firebaseService.getCoach(id);
+		CoachDTO coach = firebaseService.getCoachByID(id);
 		String emailURL = coach.getEmail();
-		System.out.println(emailURL);
+		System.out.println("value of email url=" + emailURL);
 		ModelAndView view = new ModelAndView();
-		view.setViewName("index");
+		view.setViewName("addAthlete");
 		view.addObject("coach", coach);
 		return view;
 	}

@@ -115,7 +115,7 @@ public class FirebaseService {
 		String password = "";
 		String email = "";
 		CollectionReference collectionRef = FirestoreClient.getFirestore().collection("Users");
-		Query query = collectionRef.whereEqualTo("coachId", coachId);
+		Query query = collectionRef.whereEqualTo("coachID", coachId);
 		ApiFuture<QuerySnapshot> future = query.get();
 		
 		for (DocumentSnapshot document : future.get().getDocuments()) {
@@ -126,6 +126,7 @@ public class FirebaseService {
 		}
 		
 		CoachDTO currentUser = new CoachDTO(email, userName, password, coachId);
+		System.out.println("Value of coach=" + currentUser.toString());
 		
 		return currentUser;
 	}
