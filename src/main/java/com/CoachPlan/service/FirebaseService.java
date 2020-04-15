@@ -1,6 +1,7 @@
 package com.CoachPlan.service;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 import org.springframework.stereotype.Service;
@@ -110,13 +111,14 @@ public class FirebaseService {
 		return currentUser;
 	}
 	
+	@SuppressWarnings("unchecked")
 	public StudentDTO getStudent(String email) throws InterruptedException, ExecutionException {
 		String title = "";
 		String userName = "";
 		String password = "";
 		String coachId = "";
 		String athleteID = "";
-		
+		ArrayList<String> workouts = null;
 		CollectionReference collectionRef = FirestoreClient.getFirestore().collection("Students");
 		Query query = collectionRef.whereEqualTo("email", email);
 		ApiFuture<QuerySnapshot> future = query.get();
@@ -126,9 +128,11 @@ public class FirebaseService {
 			password = document.getString("password");
 			coachId = document.getString("coachId");
 			athleteID = document.getString("athleteID");
+			workouts = (ArrayList<String>) document.get("workouts");
 		}
+		System.out.println("value of workouts: " + workouts.toString());
 		
-		StudentDTO currentUser = new StudentDTO(email, userName, password, coachId, athleteID);
+		StudentDTO currentUser = new StudentDTO(email, userName, password, coachId, athleteID, workouts);
 		
 		return currentUser;
 	}
