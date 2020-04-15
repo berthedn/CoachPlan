@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 
 <head>
 	<meta charset="UTF-8"/>
@@ -51,7 +51,7 @@
 		<button>Home</button>
 	</a>
 	-->
-	
+	<h2 th:text="${student.userName}"></h2>
 	<h3>View Your Scheduled Workouts</h3>
 
 	<table >

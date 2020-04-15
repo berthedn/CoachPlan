@@ -48,8 +48,21 @@ public class CoachPlanController {
 	
 	//this will be the initial athlete page when logged in as an athlete
 	@RequestMapping("/athlete")
-	public String athletePage() {
-		return "athlete";
+	public ModelAndView athletePage(@RequestParam(value="student_email") String email) {
+		StudentDTO student;
+		ModelAndView view = new ModelAndView();
+
+		try {
+			student = firebaseService.getStudent(email);
+			view.setViewName("athlete");
+			view.addObject("student", student);
+			return view;
+		} catch (InterruptedException | ExecutionException e) {
+			e.printStackTrace();
+		}
+		view.setViewName("error");
+		return view;
+
 	}
 	
 	@RequestMapping("/athleteList")

@@ -8,8 +8,14 @@ public class StudentDTO extends User implements IData {
 	
 	public StudentDTO(String title, String email, String fName, String password, String coachId, String athleteID) {
 		super(title, email, fName, password, coachId);
-		this.setAthleteID(athleteID);
+		this.athleteID = athleteID;
 	}
+	
+	public StudentDTO(String email, String userName, String password, String coachId, String athleteID) {
+		super(email, userName, password, coachId);
+		this.athleteID = athleteID;
+	}
+
 
 	
 	@Override

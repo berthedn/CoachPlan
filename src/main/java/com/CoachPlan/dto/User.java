@@ -25,6 +25,7 @@ public abstract class User {
 		this.coachId = coachId;
 	}
 	
+	
 	public User(String email) {
 		this.email = email;
 	}
