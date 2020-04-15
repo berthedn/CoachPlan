@@ -44,6 +44,8 @@
 		var email = document.getElementById("email");
 		var password = document.getElementById("password");
 		var form = document.getElementById("form2");
+		var coachForm = document.getElementById("coach_form");
+		var studentForm = document.getElementById("student_form");
 		
 		initial.style.display="none";
 		login.style.display="inline";
@@ -52,7 +54,8 @@
 		email.innerHTML=("Email: athlete@plan.com");
 		password.innerHTML=("Password: password");
 		form.style.display=("none");
-		
+		coachForm.style.display=("none");
+		studentForm.style.display=("inline");
 	}
 	
 	function coach(){
@@ -63,6 +66,8 @@
 		var email = document.getElementById("email");
 		var password = document.getElementById("password");
 		var form = document.getElementById("form2");
+		var studentForm = document.getElementById("student_form");
+		var coachForm = document.getElementById("coach_form");
 		
 		
 		initial.style.display="none";
@@ -72,6 +77,9 @@
 		email.innerHTML=("Email: coach@plan.com");
 		password.innerHTML=("Password: password");
 		form.style.display=("inline");
+		studentForm.style.display="none";
+		coachForm.style.display=("inline");
+		
 		
 		
 	}
@@ -95,6 +103,7 @@
 		var button = document.getElementById("button");
 		var emailField = document.getElementById("email_field");
 		var confirm = document.getElementById("confirm_password_field");
+		var studentForm = document.getElementById("student_form");
 		
 		initial.style.display="none";
 		login.style.display="inline";
@@ -102,6 +111,7 @@
 		button.value=("Register");
 		emailField.placeholder=("Email");
 		confirm.style.display="inline";
+		studentForm.style.display="inline";
 	
 	}
   
@@ -164,16 +174,35 @@
 
 <div >
 	<th:block xmlns:th="http://www.thymeleaf.org">
-	<form action="#" th:action="@{/athleteList}" th:object="${coachDTO}" method="GET">
+	<form id="coach_form" action="#" th:action="@{/athleteList}" th:object="${coachDTO}" method="GET">
 	
 	<div>
-		<h1 id="view">Login</h1>
+		<h1 id="view">Coach Login</h1>
 		<div class="textbox">
-			<input type="email" placeholder="Email" name="email" id="email_field"  >
+			<input type="email" placeholder="Email" name="email" id="coach_email"  >
 		</div>
 		
 		<div class="textbox">
-			<input type="password" placeholder="Password"  id="password_field">
+			<input type="password" placeholder="Password"  id="coach_password">
+		</div>
+		
+		<input id="logButton" class="btn" value="Login" type="submit" onclick="login()"> <br>
+		<!-- <input class="btn" value="Logout" type="button" onclick="signOut()"> -->
+		<div id="user">User</div>
+		<div id="email">email</div>
+		<div id="password">password</div>
+	</div>
+	 </form>
+	 	<form id="student_form" action="#" th:action="@{/athlete}" th:object="${studentDTO}" method="GET">
+	
+	<div>
+		<h1 id="view">Student Login</h1>
+		<div class="textbox">
+			<input type="email" placeholder="Email" name="email" id="student_email"  >
+		</div>
+		
+		<div class="textbox">
+			<input type="password" placeholder="Password"  id="student_password">
 		</div>
 		
 		<input id="logButton" class="btn" value="Login" type="submit" onclick="login()"> <br>
