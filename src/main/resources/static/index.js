@@ -8,16 +8,16 @@ var reference;
 var userEmail;
 var userPass;
 
-function login() {
+function loginStudent() {
 	
-	userEmail = document.getElementById("email_field").value;
-	userPass = document.getElementById("password_field").value;
+	userEmail = document.getElementById("student_email").value;
+	userPass = document.getElementById("student_password").value;
 	
 	console.log(userEmail + " " + userPass);
 	
 	currentEmail = userEmail.toString();
 	
-	var docRef = firebase.firestore().collection("Users").doc(currentEmail);
+	var docRef = firebase.firestore().collection("Students").doc(currentEmail);
 
 	docRef.get().then((doc) => {
 		if(doc.exists) {
@@ -31,7 +31,7 @@ function login() {
 			localStorage.setItem("name",userName);
 			localStorage.setItem("pass", currentUserPass);
 			localStorage.setItem("email", currentEmail);
-			
+			/*
 			if(currentUserId == 1 && currentUserPass == userPass) {
 				//window.alert("Signed In");
 				location.replace("http://127.0.0.1:8080/athleteList");
@@ -45,7 +45,7 @@ function login() {
 				window.alert("Wrong Email or Password");
 				location.replace("http://127.0.0.1:8080/index#");
 				console.log("3");
-			}
+			}*/
 		}else {
 			console.log("No such document");
 		}

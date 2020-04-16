@@ -15,8 +15,8 @@ public class StudentDTO extends User implements IData {
 		workouts = new ArrayList<String>();
 	}
 	
-	public StudentDTO(String email, String userName, String password, String coachId, String athleteID, ArrayList<String> workouts) {
-		super(email, userName, password, coachId);
+	public StudentDTO(String title, String email, String userName, String password, String coachId, String athleteID, ArrayList<String> workouts) {
+		super(title, email, userName, password, coachId);
 		this.athleteID = athleteID;
 		this.workouts = new ArrayList<String>(workouts);
 	}

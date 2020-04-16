@@ -32,7 +32,7 @@ public class FirebaseService {
 	}
 	
 	//for new athlete
-	public String saveAthleteDetails(IData user, WorkoutDTO workout) throws InterruptedException, ExecutionException {
+	public String saveAthleteDetails(IData user) throws InterruptedException, ExecutionException {
 		Firestore dbFirestore = FirestoreClient.getFirestore();
 		ApiFuture<WriteResult> collectionApiFuture1 = dbFirestore.collection("Students").document(user.getEmail()).set(user);
 		//ApiFuture<WriteResult> collectionApiFuture2 = dbFirestore.collection("Workouts").document(user.getEmail()).set(workout);
@@ -124,6 +124,7 @@ public class FirebaseService {
 		ApiFuture<QuerySnapshot> future = query.get();
 		
 		for (DocumentSnapshot document : future.get().getDocuments()) {
+			title = document.getString("title");
 			userName = document.getString("userName");
 			password = document.getString("password");
 			coachId = document.getString("coachId");
@@ -132,7 +133,7 @@ public class FirebaseService {
 		}
 		System.out.println("value of workouts: " + workouts.toString());
 		
-		StudentDTO currentUser = new StudentDTO(email, userName, password, coachId, athleteID, workouts);
+		StudentDTO currentUser = new StudentDTO(title, email, userName, password, coachId, athleteID, workouts);
 		
 		return currentUser;
 	}

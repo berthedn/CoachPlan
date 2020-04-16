@@ -115,9 +115,19 @@ public class CoachPlanController {
 		String ID = "2";
 		//NOTE: ID is the coachId, let's query that and pull the coach to redirect back to correct page
 		String athleteID = userName + " " + password;
-		WorkoutDTO workout = new WorkoutDTO(athleteID,"10 Jumping Jacks","10 Squats","10 minute run","10 Crunches","10 Push-ups","Rest","Rest");
-		StudentDTO newUser = new StudentDTO(ID, email, userName, password, id, athleteID);
-		firebaseService.saveAthleteDetails(newUser, workout);
+		
+		//Create ArrayList of default workouts for new athletes
+				ArrayList<String> workouts = new ArrayList<>();
+				workouts.add("10 Jumping Jacks");
+				workouts.add("10 Squats");
+				workouts.add("10 minute run");
+				workouts.add("10 Crunches");
+				workouts.add("10 Push-ups");
+				workouts.add("Rest");
+				workouts.add("Rest");
+				
+		StudentDTO newUser = new StudentDTO(ID, email, userName, password, id, athleteID, workouts);
+		firebaseService.saveAthleteDetails(newUser);
 		CoachDTO coach = firebaseService.getCoachByID(id);
 		String emailURL = coach.getEmail();
 		System.out.println("value of email url=" + emailURL);
