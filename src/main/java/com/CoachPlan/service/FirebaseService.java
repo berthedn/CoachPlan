@@ -130,12 +130,32 @@ public class FirebaseService {
 			coachId = document.getString("coachId");
 			athleteID = document.getString("athleteID");
 			workouts = (ArrayList<String>) document.get("workouts");
+			System.out.println("inside getStudent method, value of workouts =" + workouts.toString());
 		}
-		System.out.println("value of workouts: " + workouts.toString());
 		
 		StudentDTO currentUser = new StudentDTO(title, email, userName, password, coachId, athleteID, workouts);
 		
 		return currentUser;
+	}
+	
+	public void saveStudentWorkouts(String email, ArrayList<String> workouts) throws InterruptedException, ExecutionException {
+		Firestore db = FirestoreClient.getFirestore();
+		DocumentReference docRef = db.collection("Students").document(email);
+	
+		if(workouts.size() < 7) {
+			System.out.println("Array is smaller than expected, filling array with blanks");
+			do {
+				workouts.add("");
+			} while(workouts.size() < 7);
+		}
+		
+		ApiFuture<WriteResult> future = docRef.update("workouts", workouts);
+
+		WriteResult result = future.get();
+		System.out.println("Write result: " + result);
+		System.out.println("value of workouts: " + workouts.toString());
+		
+		
 	}
 	
 	public CoachDTO getCoachByID(String coachId) throws InterruptedException, ExecutionException {

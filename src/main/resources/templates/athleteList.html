@@ -41,7 +41,7 @@
 		</tr>
 		<tr th:each="student : ${students}">
 			<th class="height-50" th:text="${student}"></th>
-			<th> <a class='btn' href="edit">Edit</a> </th>
+			<th> <a class='btn' href="edit" th:href="@{/editView(studentEmail=${student.email}, coachEmail=${coach.email})}">Edit</a> </th>
 		</tr>
 	</table>
 	

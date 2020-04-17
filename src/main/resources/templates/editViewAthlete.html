@@ -12,7 +12,7 @@
 	
 	<script src="index.js"></script>
 	
-	<title>Edit Athlete Schedule</title>
+	<title>View Athlete Schedule</title>
 </head>
 <body>
  <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -26,13 +26,13 @@
     </div>
   </div>
 </nav>
-	<h1>Edit Athlete Schedule Page</h1>
+	<h1>View Athlete Schedule Page</h1>
 	<h2 th:text="${student.userName}"></h2>
 	
 	
 	
-	<a class="btn" th:href="@{/editView(studentEmail=${student.email}, coachEmail=${coach.email})}">Back</a>
-<form action="#" th:action="@{/updateWorkout(studentEmail=${student.email}, coachEmail=${coach.email})}" th:object="${studentDTO}" method="post">
+	<a class="btn" th:href="@{/athleteList(email=${coach.email})}">Back</a>
+<form action="#" th:action="@{/edit(studentEmail=${student.email}, coachEmail=${coach.email})}" th:object="${studentDTO}" method="post">
 <table>
 	<tr>
 		<th>Monday</th>
@@ -47,55 +47,55 @@
 		<th class="height-600">
 				<fieldset>
 					<p>
-						<textarea th:text="${student.workouts[0]}" id="monday" th:field="*{mondayWorkout}"  rows="30" cols="20"></textarea>						
+						<textarea th:text="${student.workouts[1]}" id="monday"   rows="30" cols="20"></textarea>						
 					</p>
 				</fieldset>
 		</th>
 		<th>
 				<fieldset>
 					<p>
-						<textarea th:text="${student.workouts[1]}" id="tuesday" th:field="*{tuesdayWorkout}"  rows="30" cols="20"></textarea>						
+						<textarea th:text="${student.workouts[5]}" id="tuesday"  rows="30" cols="20"></textarea>						
 					</p>
 				</fieldset>
 		</th>
 		<th>
 				<fieldset>
 					<p>
-						<textarea th:text="${student.workouts[2]}" id="wednesday" th:field="*{wednesdayWorkout}" rows="30" cols="20"></textarea>						
+						<textarea th:text="${student.workouts[6]}" id="wednesday"  rows="30" cols="20"></textarea>						
 					</p>
 				</fieldset>
 		</th>
 		<th>
 				<fieldset>
 					<p>
-						<textarea th:text="${student.workouts[3]}" id="thursday" th:field="*{thursdayWorkout}"  rows="30" cols="20"></textarea>
+						<textarea th:text="${student.workouts[4]}" id="thursday"  rows="30" cols="20"></textarea>
 					</p>
 				</fieldset>
 		</th>
 		<th>
 				<fieldset>
 					<p>
-						<textarea th:text="${student.workouts[4]}" id="friday" th:field="*{fridayWorkout}" rows="30" cols="20"></textarea>
+						<textarea th:text="${student.workouts[0]}" id="friday"  rows="30" cols="20"></textarea>
 					</p>
 				</fieldset>
 		</th>
 		<th>
 				<fieldset>
 					<p>
-						<textarea th:text="${student.workouts[5]}" id="saturday" th:field="*{saturdayWorkout}"   rows="30" cols="20"></textarea>
+						<textarea th:text="${student.workouts[2]}" id="saturday"  rows="30" cols="20"></textarea>
 					</p>
 				</fieldset>
 		</th>
 		<th>
 				<fieldset>
 					<p>
-						<textarea th:text="${student.workouts[6]}" id="sunday" th:field="*{sundayWorkout}" rows="30" cols="20"></textarea>
+						<textarea th:text="${student.workouts[3]}" id="sunday" rows="30" cols="20"></textarea>
 					</p>
 				</fieldset>
 		</th>
 	</tr>
 </table>
-	<input id="button" class="btn-athlete" value="submit" type="submit"/>
+	<input id="button" class="btn-athlete" value="Update Schedule" type="submit"/>
 </form>
 
 </body>

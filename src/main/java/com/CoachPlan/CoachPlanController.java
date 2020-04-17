@@ -6,6 +6,7 @@ import java.util.concurrent.ExecutionException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -80,8 +81,69 @@ public class CoachPlanController {
 	
 	//page for coaches to edit their athlete schedules
 	@RequestMapping("/edit")
-	public String editAthlete() {
-		return "editAthlete";
+	public ModelAndView editAthlete(@RequestParam(value = "studentEmail") String studentEmail, @RequestParam(value="coachEmail") String coachEmail) {
+		StudentDTO student = null;
+		CoachDTO coach = new CoachDTO(coachEmail);
+		ModelAndView view = new ModelAndView();
+		try {
+			student = firebaseService.getStudent(studentEmail);
+			System.out.println("value of workouts in /editAthlete: " + student.getWorkouts().toString());
+			view.addObject("student", student);
+			view.addObject("coach", coach);
+			view.addObject("studentDTO", new StudentDTO());
+			view.setViewName("editAthlete");
+			return view;
+		} catch (InterruptedException | ExecutionException e) {
+			e.printStackTrace();
+		}
+		view.setViewName("editAthlete");
+		return view;
+	}
+	
+	//page for coaches to view their athlete of choices schedule
+	@RequestMapping("/editView")
+	public ModelAndView editViewAthlete(@RequestParam(value = "studentEmail") String studentEmail, @RequestParam(value="coachEmail") String coachEmail) {
+		StudentDTO student = null;
+		CoachDTO coach = null;
+		ModelAndView view = new ModelAndView();
+		try {
+			coach = new CoachDTO(coachEmail);
+			student = firebaseService.getStudent(studentEmail);
+			System.out.println("value of workouts in /editAthlete: " + student.getWorkouts().toString());
+			view.addObject("student", student);
+			view.addObject("coach", coach);
+			view.addObject("studentDTO", new StudentDTO());
+			view.setViewName("editViewAthlete");
+			return view;
+		} catch (InterruptedException | ExecutionException e) {
+			e.printStackTrace();
+		}
+		view.setViewName("editViewAthlete");
+		return view;
+	}
+	
+	@RequestMapping(value = "/updateWorkout", method = RequestMethod.POST)
+	public ModelAndView updateWorkout(@RequestParam(value = "studentEmail") String studentEmail, @RequestParam(value="coachEmail") String coachEmail, StudentDTO student) throws InterruptedException, ExecutionException {
+		CoachDTO coach = new CoachDTO(coachEmail);
+		System.out.println("reached update workout endpoint!");
+		System.out.println("value of email= " + studentEmail);
+		student.setEmail(studentEmail);
+		System.out.println("value of student email in student object " + student.getEmail());
+		StudentDTO student2 = firebaseService.getStudent(studentEmail);
+		System.out.println("value of workouts from edithAthlete page=" + student.getWorkouts());
+		System.out.println("value of old workouts:" + student2.getWorkouts().toString());
+		student2.setWorkouts(student.getWorkouts());
+		System.out.println("new value of workouts:" + student2.getWorkouts().toString());
+		String workouts = student.getWorkouts().toString();
+		
+		firebaseService.saveStudentWorkouts(studentEmail, student2.getWorkouts());
+		
+		
+		ModelAndView view = new ModelAndView();
+		view.addObject("coach", coach);
+		view.setViewName("updateWorkout");
+		view.addObject("student", student);
+		return view;
 	}
 	
 	//Add new coach to database
@@ -115,18 +177,8 @@ public class CoachPlanController {
 		String ID = "2";
 		//NOTE: ID is the coachId, let's query that and pull the coach to redirect back to correct page
 		String athleteID = userName + " " + password;
-		
-		//Create ArrayList of default workouts for new athletes
-				ArrayList<String> workouts = new ArrayList<>();
-				workouts.add("10 Jumping Jacks");
-				workouts.add("10 Squats");
-				workouts.add("10 minute run");
-				workouts.add("10 Crunches");
-				workouts.add("10 Push-ups");
-				workouts.add("Rest");
-				workouts.add("Rest");
 				
-		StudentDTO newUser = new StudentDTO(ID, email, userName, password, id, athleteID, workouts);
+		StudentDTO newUser = new StudentDTO(ID, email, userName, password, id, athleteID);
 		firebaseService.saveAthleteDetails(newUser);
 		CoachDTO coach = firebaseService.getCoachByID(id);
 		String emailURL = coach.getEmail();
