@@ -1,12 +1,33 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8">
+<meta charset="UTF-8"/>
+
+	<link rel="stylesheet" type="text/css" media="screen" href="style.css" />
+	
+	<script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-auth.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-database.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-firestore.js"></script>
+	
+	<script src="index.js"></script>
+	
 <title>Add Athlete</title>
+<link rel="stylesheet" type="text/css" media="screen" href="style.css"/>
 </head>
 <body>
-
-<h1>Successfully added Student!</h1>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="athleteList">CoachPlan</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      <a class="nav-item nav-link active" href="index">Logout <span class="sr-only">(current)</span></a>
+    </div>
+  </div>
+</nav>
+<h1>Successfully added Athlete!</h1>
 
 <a class="btn" th:href="@{/athleteList(email=${coach.email})}">Go back</a>
 
